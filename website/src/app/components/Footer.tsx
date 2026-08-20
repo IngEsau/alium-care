@@ -1,6 +1,7 @@
 import { Link } from "react-router";
 import { Instagram, Facebook, MessageCircle } from "lucide-react";
 import Group from "../../imports/Group6-13-1474";
+import { whatsappContact } from "../config/site";
 
 export function Footer() {
   return (
@@ -32,8 +33,11 @@ export function Footer() {
               <Link to="/contacto" className="block text-white/80 hover:text-white transition-colors">
                 Contacto
               </Link>
-              <Link to="/" className="block text-white/80 hover:text-white transition-colors">
-                Política de privacidad
+              <Link
+                to="/aviso-de-privacidad"
+                className="block text-white/80 transition-colors hover:text-white"
+              >
+                Aviso de privacidad
               </Link>
             </div>
           </div>
@@ -72,7 +76,7 @@ export function Footer() {
                 </svg>
               </a>
               <a
-                href="https://wa.me/5212219634544"
+                href={whatsappContact.url}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center hover:bg-white/20 transition-colors"
