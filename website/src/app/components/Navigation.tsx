@@ -1,0 +1,88 @@
+import { Link } from "react-router";
+import { Menu, X } from "lucide-react";
+import { useState } from "react";
+import Group from "../../imports/Group6";
+
+export function Navigation() {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+  return (
+    <nav className="sticky top-0 z-50 bg-[#FAF5EF] border-b border-[#E8E0D5]">
+      <div className="max-w-7xl mx-auto px-6 lg:px-8">
+        <div className="flex items-center justify-between h-20">
+          {/* Logo */}
+          <Link to="/" className="flex items-center gap-3 hover:opacity-80 transition-opacity">
+            <div className="w-10 h-10">
+              <Group />
+            </div>
+            <span className="text-xl font-semibold" style={{ fontFamily: 'var(--font-heading)' }}>
+              Alium Care
+            </span>
+          </Link>
+
+          {/* Desktop Navigation */}
+          <div className="hidden md:flex items-center gap-8">
+            <Link to="/" className="text-[#1E1E1E] hover:text-[#436243] transition-colors">
+              Inicio
+            </Link>
+            <Link to="/servicios" className="text-[#1E1E1E] hover:text-[#436243] transition-colors">
+              Servicios
+            </Link>
+            <Link to="/contacto" className="text-[#1E1E1E] hover:text-[#436243] transition-colors">
+              Contacto
+            </Link>
+            <Link
+              to="/contacto"
+              className="px-6 py-2.5 bg-[#436243] text-white rounded-lg hover:bg-[#5F775D] transition-colors"
+            >
+              Agendar consulta
+            </Link>
+          </div>
+
+          {/* Mobile Menu Button */}
+          <button
+            onClick={() => setIsMenuOpen(!isMenuOpen)}
+            className="md:hidden p-2 text-[#1E1E1E]"
+            aria-label="Toggle menu"
+          >
+            {isMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+          </button>
+        </div>
+
+        {/* Mobile Menu */}
+        {isMenuOpen && (
+          <div className="md:hidden pb-6 space-y-4">
+            <Link
+              to="/"
+              onClick={() => setIsMenuOpen(false)}
+              className="block text-[#1E1E1E] hover:text-[#436243] transition-colors"
+            >
+              Inicio
+            </Link>
+            <Link
+              to="/servicios"
+              onClick={() => setIsMenuOpen(false)}
+              className="block text-[#1E1E1E] hover:text-[#436243] transition-colors"
+            >
+              Servicios
+            </Link>
+            <Link
+              to="/contacto"
+              onClick={() => setIsMenuOpen(false)}
+              className="block text-[#1E1E1E] hover:text-[#436243] transition-colors"
+            >
+              Contacto
+            </Link>
+            <Link
+              to="/contacto"
+              onClick={() => setIsMenuOpen(false)}
+              className="block w-full px-6 py-2.5 bg-[#436243] text-white rounded-lg hover:bg-[#5F775D] transition-colors text-center"
+            >
+              Agendar consulta
+            </Link>
+          </div>
+        )}
+      </div>
+    </nav>
+  );
+}

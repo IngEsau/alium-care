@@ -1,0 +1,8 @@
+website/node_modules/
+website/dist/
+website/node_modules/.vite/
+website/node_modules/.vite-temp/
+
+*.log
+.DS_Store
+Design 3-Page Website.zip
