@@ -3,7 +3,9 @@ import { Heart, Stethoscope, Scale, Users, Globe, Sparkles, ArrowRight } from "l
 import { useState } from "react";
 import heroImg from "figma:asset/26ac470c256aaee8ec07ea46ae1d337bf3b0b9ef.png";
 import communityImg from "figma:asset/af0e2ac995fa50f45a2913f1525aaa8364bdea77.png";
+import { TestimonialsSection } from "../components/TestimonialsSection";
 import { siteLinks } from "../config/site";
+import { testimonials } from "../content/socialProof";
 
 export function Home() {
   const [email, setEmail] = useState("");
@@ -107,6 +109,8 @@ export function Home() {
           </div>
         </div>
       </section>
+
+      <TestimonialsSection items={testimonials} />
 
       {/* Community CTA Section */}
       <section className="py-20" id="comunidad">
