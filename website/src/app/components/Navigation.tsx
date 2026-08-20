@@ -2,6 +2,7 @@ import { Link } from "react-router";
 import { Menu, X } from "lucide-react";
 import { useState } from "react";
 import Group from "../../imports/Group6";
+import { consultationCta } from "../config/site";
 
 export function Navigation() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -32,10 +33,10 @@ export function Navigation() {
               Contacto
             </Link>
             <Link
-              to="/contacto"
+              to={consultationCta.to}
               className="px-6 py-2.5 bg-[#436243] text-white rounded-lg hover:bg-[#5F775D] transition-colors"
             >
-              Agendar consulta
+              {consultationCta.label}
             </Link>
           </div>
 
@@ -74,11 +75,11 @@ export function Navigation() {
               Contacto
             </Link>
             <Link
-              to="/contacto"
+              to={consultationCta.to}
               onClick={() => setIsMenuOpen(false)}
               className="block w-full px-6 py-2.5 bg-[#436243] text-white rounded-lg hover:bg-[#5F775D] transition-colors text-center"
             >
-              Agendar consulta
+              {consultationCta.label}
             </Link>
           </div>
         )}

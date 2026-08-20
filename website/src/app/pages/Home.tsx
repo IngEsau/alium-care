@@ -3,6 +3,7 @@ import { Heart, Stethoscope, Scale, Users, Globe, Sparkles, ArrowRight } from "l
 import { useState } from "react";
 import heroImg from "figma:asset/26ac470c256aaee8ec07ea46ae1d337bf3b0b9ef.png";
 import communityImg from "figma:asset/af0e2ac995fa50f45a2913f1525aaa8364bdea77.png";
+import { siteLinks } from "../config/site";
 
 export function Home() {
   const [email, setEmail] = useState("");
@@ -28,18 +29,18 @@ export function Home() {
               </p>
               <div className="flex flex-col sm:flex-row gap-4">
                 <Link
-                  to="/servicios"
+                  to={siteLinks.services}
                   className="px-8 py-3.5 bg-[#436243] text-white rounded-lg hover:bg-[#5F775D] transition-colors text-center inline-flex items-center justify-center gap-2"
                 >
                   Conoce nuestros servicios
                   <ArrowRight className="w-5 h-5" />
                 </Link>
-                <a
-                  href="#webinar"
+                <Link
+                  to={siteLinks.consultation}
                   className="px-8 py-3.5 border-2 border-[#436243] text-[#436243] rounded-lg hover:bg-[#436243] hover:text-white transition-colors text-center"
                 >
-                  Únete a nuestro webinar
-                </a>
+                  Agenda una consulta
+                </Link>
               </div>
             </div>
 
@@ -63,19 +64,19 @@ export function Home() {
               icon={<Heart className="w-8 h-8 text-[#436243]" />}
               title="Asesoría en Enfermería"
               description="Guía práctica para el cuidado diario de tu familiar."
-              link="/servicios"
+              link={siteLinks.nursingService}
             />
             <ServiceCard
               icon={<Stethoscope className="w-8 h-8 text-[#436243]" />}
               title="Orientación Médica"
               description="Entiende diagnósticos y opciones de tratamiento con claridad."
-              link="/servicios"
+              link={siteLinks.medicalService}
             />
             <ServiceCard
               icon={<Scale className="w-8 h-8 text-[#436243]" />}
               title="Asesoría Legal"
               description="Conoce tus derechos y los de tu familia en situaciones de salud."
-              link="/servicios"
+              link={siteLinks.legalService}
             />
           </div>
         </div>
@@ -108,7 +109,7 @@ export function Home() {
       </section>
 
       {/* Community CTA Section */}
-      <section className="py-20" id="webinar">
+      <section className="py-20" id="comunidad">
         <div className="max-w-4xl mx-auto px-6 lg:px-8 text-center">
           <img
             src={communityImg}
@@ -124,6 +125,7 @@ export function Home() {
           <form onSubmit={handleSubmit} className="flex flex-col sm:flex-row gap-4 max-w-xl mx-auto">
             <input
               type="email"
+              aria-label="Correo electrónico"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               placeholder="tu@email.com"

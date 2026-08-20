@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { MapPin, Phone, Mail, Instagram, Facebook, MessageCircle, Shield } from "lucide-react";
+import { whatsappContact } from "../config/site";
 
 export function Contacto() {
   const [formData, setFormData] = useState({
@@ -41,7 +42,7 @@ export function Contacto() {
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <div className="grid lg:grid-cols-2 gap-12">
             {/* Contact Form */}
-            <div className="bg-white p-8 lg:p-12 rounded-2xl">
+            <div id="formulario-contacto" className="scroll-mt-24 bg-white p-8 lg:p-12 rounded-2xl">
               <h2 className="text-2xl lg:text-3xl mb-8 text-[#1E1E1E]">
                 Envíanos un mensaje
               </h2>
@@ -130,8 +131,8 @@ export function Contacto() {
                   <ContactInfoItem
                     icon={<MessageCircle className="w-6 h-6 text-[#436243]" />}
                     label="WhatsApp"
-                    value="221 963 4544"
-                    link="https://wa.me/5212219634544"
+                    value={whatsappContact.displayNumber}
+                    link={whatsappContact.url}
                   />
                   <ContactInfoItem
                     icon={<Mail className="w-6 h-6 text-[#436243]" />}
