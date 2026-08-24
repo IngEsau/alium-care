@@ -1,7 +1,7 @@
 import { Link } from "react-router";
 import { Instagram, Facebook, MessageCircle } from "lucide-react";
 import Group from "../../imports/Group6-13-1474";
-import { whatsappContact } from "../config/site";
+import { socialLinks, whatsappContact } from "../config/site";
 
 export function Footer() {
   return (
@@ -30,6 +30,12 @@ export function Footer() {
               <Link to="/servicios" className="block text-white/80 hover:text-white transition-colors">
                 Servicios
               </Link>
+              <Link to="/recursos" className="block text-white/80 hover:text-white transition-colors">
+                Recursos
+              </Link>
+              <Link to="/preguntas-frecuentes" className="block text-white/80 hover:text-white transition-colors">
+                Preguntas frecuentes
+              </Link>
               <Link to="/contacto" className="block text-white/80 hover:text-white transition-colors">
                 Contacto
               </Link>
@@ -47,7 +53,7 @@ export function Footer() {
             <h4 className="font-semibold mb-4" style={{ fontFamily: 'var(--font-body)' }}>Síguenos</h4>
             <div className="flex gap-4">
               <a
-                href="https://instagram.com"
+                href={socialLinks.instagram}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center hover:bg-white/20 transition-colors"

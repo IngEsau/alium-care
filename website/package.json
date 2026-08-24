@@ -5,7 +5,9 @@
   "type": "module",
   "scripts": {
     "build": "vite build",
-    "dev": "vite"
+    "dev": "vite",
+    "generate:resources": "node scripts/generate-resource-downloads.mjs",
+    "test:lead-endpoint": "node scripts/test-resource-lead-endpoint.mjs"
   },
   "dependencies": {
     "@emotion/react": "11.14.0",

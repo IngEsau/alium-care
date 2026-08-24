@@ -6,10 +6,15 @@ import legalImg from "figma:asset/c0e4203759f6966b6786a263de5e22650deeadd0.png";
 import { TeamSection } from "../components/TeamSection";
 import { siteLinks } from "../config/site";
 import { teamMembers } from "../content/socialProof";
+import { PageMeta } from "../components/PageMeta";
 
 export function Servicios() {
   return (
     <div className="bg-[#FAF5EF]">
+      <PageMeta
+        title="Servicios de orientación integral | Alium Care"
+        description="Conoce la orientación en enfermería, medicina y derecho que Alium Care ofrece a familias y personas cuidadoras."
+      />
       {/* Page Header */}
       <section className="py-20 text-center">
         <div className="max-w-4xl mx-auto px-6 lg:px-8">
@@ -132,6 +137,12 @@ export function Servicios() {
           >
             Contactar ahora
             <ArrowRight className="w-5 h-5" />
+          </Link>
+          <Link
+            to={siteLinks.faq}
+            className="mt-4 block text-sm font-medium text-[#436243] hover:text-[#5F775D]"
+          >
+            Consulta nuestras preguntas frecuentes
           </Link>
         </div>
       </section>

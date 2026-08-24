@@ -1,6 +1,7 @@
 import { useState } from "react";
-import { MapPin, Phone, Mail, Instagram, Facebook, MessageCircle, Shield } from "lucide-react";
-import { whatsappContact } from "../config/site";
+import { MapPin, Mail, Instagram, Facebook, MessageCircle, Shield } from "lucide-react";
+import { socialLinks, whatsappContact } from "../config/site";
+import { PageMeta } from "../components/PageMeta";
 
 export function Contacto() {
   const [formData, setFormData] = useState({
@@ -25,6 +26,10 @@ export function Contacto() {
 
   return (
     <div className="bg-[#FAF5EF]">
+      <PageMeta
+        title="Contacto | Alium Care"
+        description="Contacta a Alium Care para solicitar información sobre orientación en cuidados, medicina y derecho."
+      />
       {/* Page Header */}
       <section className="py-20 text-center">
         <div className="max-w-4xl mx-auto px-6 lg:px-8">
@@ -156,7 +161,7 @@ export function Contacto() {
                     icon={<Instagram className="w-5 h-5" />}
                     label="Instagram"
                     handle="@aliumcare"
-                    link="https://instagram.com"
+                    link={socialLinks.instagram}
                   />
                   <SocialLink
                     icon={<Facebook className="w-5 h-5" />}
@@ -193,19 +198,6 @@ export function Contacto() {
         </div>
       </section>
 
-      {/* Map Section */}
-      <section className="py-16">
-        <div className="max-w-7xl mx-auto px-6 lg:px-8">
-          <div className="bg-white rounded-2xl overflow-hidden">
-            <div className="aspect-video bg-gradient-to-br from-[#5F775D]/20 to-[#436243]/20 flex items-center justify-center">
-              <div className="text-center">
-                <MapPin className="w-16 h-16 text-[#436243] mx-auto mb-4" />
-                <p className="text-[#1E1E1E]/70">San Andrés Cholula, Puebla</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
     </div>
   );
 }

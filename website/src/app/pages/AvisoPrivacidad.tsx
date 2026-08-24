@@ -1,4 +1,5 @@
 import { CheckCircle2, ExternalLink } from "lucide-react";
+import { PageMeta } from "../components/PageMeta";
 
 const lawUrl = "https://www.diputados.gob.mx/LeyesBiblio/pdf/LFPDPPP.pdf";
 const regulationUrl = "https://www.diputados.gob.mx/LeyesBiblio/regley/Reg_LFPDPPP.pdf";
@@ -6,6 +7,10 @@ const regulationUrl = "https://www.diputados.gob.mx/LeyesBiblio/regley/Reg_LFPDP
 export function AvisoPrivacidad() {
   return (
     <div className="bg-[#FAF5EF] text-[#1E1E1E]">
+      <PageMeta
+        title="Aviso de privacidad | Alium Care"
+        description="Consulta cómo Alium Care prevé tratar los datos personales y cómo ejercer los derechos ARCO."
+      />
       <section className="border-b border-[#E8E0D5] bg-white py-16 lg:py-20">
         <div className="mx-auto max-w-4xl px-6 lg:px-8">
           <h1 className="mb-6 text-4xl lg:text-5xl">Aviso de privacidad integral</h1>
@@ -19,8 +24,12 @@ export function AvisoPrivacidad() {
         <div className="mx-auto max-w-4xl space-y-8 px-6 lg:px-8">
           <PrivacySection title="Estado comprobado del prototipo">
             <ul className="space-y-3">
-              <StatusItem>Los formularios conservan la información sólo en memoria del navegador.</StatusItem>
-              <StatusItem>No existe envío a servidor, API, base de datos, CRM o servicio de correo.</StatusItem>
+              <StatusItem>El formulario de Contacto conserva la información sólo en memoria del navegador.</StatusItem>
+              <StatusItem>
+                Las descargas preparan un envío de nombre, correo y teléfono, pero no existe un endpoint
+                activo en el repositorio; sin él no se transmite información.
+              </StatusItem>
+              <StatusItem>No existe backend, base de datos, CRM o servicio de correo configurado.</StatusItem>
               <StatusItem>No se detectaron analytics, pasarela de pagos ni cookies activas de la aplicación.</StatusItem>
               <StatusItem>
                 El navegador sí solicita fuentes a Adobe Typekit y Google Fonts; los enlaces sociales y
@@ -48,6 +57,7 @@ export function AvisoPrivacidad() {
               <li>Identificación: nombre.</li>
               <li>Contacto: correo electrónico y número de WhatsApp.</li>
               <li>Contenido de la consulta: mensaje escrito libremente por la persona.</li>
+              <li>Solicitud de recurso: guía seleccionada, fecha y aceptación del aviso.</li>
               <li>
                 Datos técnicos de navegación y registros del servidor:
                 <strong> [PENDIENTE: confirmar hosting, campos y periodo de conservación]</strong>.
@@ -68,6 +78,7 @@ export function AvisoPrivacidad() {
             <p className="font-semibold">Finalidades primarias propuestas, sujetas a confirmación:</p>
             <ul className="mt-3 list-disc space-y-2 pl-6 text-[#1E1E1E]/80">
               <li>Recibir, identificar y responder solicitudes de información u orientación.</li>
+              <li>Gestionar la solicitud y entrega de recursos descargables.</li>
               <li>Contactar a la persona por el medio que elija para dar seguimiento a su solicitud.</li>
               <li>Gestionar una eventual relación de servicios y cumplir obligaciones aplicables.</li>
             </ul>
@@ -106,9 +117,9 @@ export function AvisoPrivacidad() {
 
           <PrivacySection title="6. Personas encargadas, proveedores y transferencias">
             <p>
-              El prototipo no transmite el contenido de los formularios. Antes de activarlos se deberán
-              documentar el hosting, correo, CRM, base de datos, agenda, videollamada, almacenamiento,
-              WhatsApp y cualquier futuro proveedor de pagos o analítica.
+              Contacto todavía no transmite información. Las descargas sólo enviarán datos cuando se configure
+              un endpoint externo. Antes de activarlo se deberán documentar el hosting, endpoint, correo, CRM,
+              base de datos, agenda, videollamada, almacenamiento, WhatsApp y cualquier futuro proveedor.
             </p>
             <p className="mt-4">
               <strong>[PENDIENTE]</strong> Clasificar cada proveedor como persona encargada o tercero,
@@ -120,9 +131,9 @@ export function AvisoPrivacidad() {
 
           <PrivacySection title="7. Conservación, bloqueo y supresión">
             <p>
-              Hoy no existe almacenamiento de servidor: los datos escritos se pierden al recargar la página
-              o después de la simulación de envío. Esto no cubre mensajes enviados voluntariamente por
-              WhatsApp o correo electrónico.
+              Hoy no existe almacenamiento de servidor configurado: los datos escritos se pierden al recargar
+              la página o después de limpiar el formulario. Cuando se active el endpoint de descargas, deberán
+              declararse su almacenamiento y plazos. Esto no cubre mensajes enviados voluntariamente por WhatsApp.
             </p>
             <p className="mt-4">
               Antes de operar, Alium Care deberá aprobar una matriz de conservación por dato y finalidad.

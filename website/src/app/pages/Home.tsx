@@ -1,23 +1,18 @@
 import { Link } from "react-router";
-import { Heart, Stethoscope, Scale, Users, Globe, Sparkles, ArrowRight } from "lucide-react";
-import { useState } from "react";
+import { ArrowRight, BookOpen, Check, Globe, Heart, Scale, Stethoscope, Users } from "lucide-react";
 import heroImg from "figma:asset/26ac470c256aaee8ec07ea46ae1d337bf3b0b9ef.png";
-import communityImg from "figma:asset/af0e2ac995fa50f45a2913f1525aaa8364bdea77.png";
 import { TestimonialsSection } from "../components/TestimonialsSection";
-import { siteLinks } from "../config/site";
+import { consultationCta, siteLinks } from "../config/site";
 import { testimonials } from "../content/socialProof";
+import { PageMeta } from "../components/PageMeta";
 
 export function Home() {
-  const [email, setEmail] = useState("");
-
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    alert(`¡Gracias por tu interés! Te contactaremos pronto a ${email}`);
-    setEmail("");
-  };
-
   return (
     <div className="bg-[#FAF5EF]">
+      <PageMeta
+        title="Alium Care | Orientación integral para familias"
+        description="Orientación en enfermería, medicina y derecho para familias y personas cuidadoras que necesitan información clara y acompañamiento."
+      />
       {/* Hero Section */}
       <section className="relative py-20 lg:py-32 overflow-hidden">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
@@ -41,7 +36,7 @@ export function Home() {
                   to={siteLinks.consultation}
                   className="px-8 py-3.5 border-2 border-[#436243] text-[#436243] rounded-lg hover:bg-[#436243] hover:text-white transition-colors text-center"
                 >
-                  Agenda una consulta
+                  {consultationCta.label}
                 </Link>
               </div>
             </div>
@@ -92,9 +87,9 @@ export function Home() {
           </h2>
           <div className="grid md:grid-cols-3 gap-12">
             <TrustCard
-              icon={<Sparkles className="w-10 h-10" />}
-              title="Webinar único en su tipo"
-              description="Sesiones educativas exclusivas con expertos en cuidados integrales."
+              icon={<BookOpen className="w-10 h-10" />}
+              title="Recursos prácticos"
+              description="Guías breves para preparar conversaciones, organizar cuidados y reconocer próximos pasos."
             />
             <TrustCard
               icon={<Globe className="w-10 h-10" />}
@@ -112,40 +107,59 @@ export function Home() {
 
       <TestimonialsSection items={testimonials} />
 
-      {/* Community CTA Section */}
-      <section className="py-20" id="comunidad">
-        <div className="max-w-4xl mx-auto px-6 lg:px-8 text-center">
-          <img
-            src={communityImg}
-            alt="Manos de familia unidas"
-            className="w-full h-64 object-cover rounded-2xl mb-10 mx-auto max-w-2xl"
-          />
-          <h2 className="text-3xl lg:text-4xl text-[#1E1E1E] mb-6">
-            Únete a nuestra comunidad
-          </h2>
-          <p className="text-lg text-[#1E1E1E]/70 mb-8">
-            Aprende, comparte y encuentra apoyo con familias que viven lo mismo que tú.
-          </p>
-          <form onSubmit={handleSubmit} className="flex flex-col sm:flex-row gap-4 max-w-xl mx-auto">
-            <input
-              type="email"
-              aria-label="Correo electrónico"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              placeholder="tu@email.com"
-              required
-              className="flex-1 px-6 py-3.5 rounded-lg border border-[#E8E0D5] bg-white text-[#1E1E1E] focus:outline-none focus:ring-2 focus:ring-[#436243]"
-            />
-            <button
-              type="submit"
-              className="px-8 py-3.5 bg-[#436243] text-white rounded-lg hover:bg-[#5F775D] transition-colors whitespace-nowrap"
-            >
-              Quiero unirme
-            </button>
-          </form>
+      {/* Featured guide */}
+      <section className="py-16 lg:py-20" id="guia-gratuita">
+        <div className="mx-auto max-w-6xl px-6 lg:px-8">
+          <div className="grid overflow-hidden rounded-3xl border border-[#E8E0D5] bg-white shadow-sm lg:grid-cols-[0.8fr_1.2fr]">
+            <div className="flex min-h-64 items-center justify-center bg-[#5F775D] p-10 text-white">
+              <div className="flex size-32 items-center justify-center rounded-full border border-white/25 bg-white/10">
+                <BookOpen className="size-16" aria-hidden="true" />
+              </div>
+            </div>
+            <div className="p-8 lg:p-12">
+              <p className="mb-3 text-sm font-semibold tracking-[0.14em] text-[#735F37] uppercase">Guía gratuita</p>
+              <h2 className="text-3xl leading-tight text-[#1E1E1E] lg:text-4xl">
+                5 preguntas para conversar mejor con el equipo médico
+              </h2>
+              <p className="mt-5 text-lg leading-relaxed text-[#1E1E1E]/70">
+                Una lectura breve para ordenar tus dudas, aprovechar la consulta y salir con próximos pasos más claros.
+              </p>
+              <ul className="mt-6 space-y-3 text-sm text-[#1E1E1E]/75">
+                <GuideBenefit text="Prepara la información esencial antes de la consulta." />
+                <GuideBenefit text="Identifica beneficios, riesgos, alternativas y seguimiento." />
+                <GuideBenefit text="Registra acuerdos para compartirlos con tu familia." />
+              </ul>
+              <div className="mt-8 flex flex-col gap-3 sm:flex-row">
+                <Link
+                  to={siteLinks.featuredGuide}
+                  className="inline-flex items-center justify-center gap-2 rounded-lg bg-[#436243] px-6 py-3 text-white transition-colors hover:bg-[#5F775D]"
+                >
+                  Descargar la guía
+                  <ArrowRight className="size-5" aria-hidden="true" />
+                </Link>
+                <Link
+                  to={siteLinks.resources}
+                  className="inline-flex items-center justify-center rounded-lg border border-[#436243] px-6 py-3 text-[#436243] transition-colors hover:bg-[#436243] hover:text-white"
+                >
+                  Ver todos los recursos
+                </Link>
+              </div>
+            </div>
+          </div>
         </div>
       </section>
     </div>
+  );
+}
+
+function GuideBenefit({ text }: { text: string }) {
+  return (
+    <li className="flex gap-3">
+      <span className="mt-0.5 flex size-5 shrink-0 items-center justify-center rounded-full bg-[#436243]/10">
+        <Check className="size-3.5 text-[#436243]" aria-hidden="true" />
+      </span>
+      <span>{text}</span>
+    </li>
   );
 }
 

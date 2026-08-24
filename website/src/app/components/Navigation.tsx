@@ -22,12 +22,18 @@ export function Navigation() {
           </Link>
 
           {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center gap-8">
+          <div className="hidden lg:flex items-center gap-7">
             <Link to="/" className="text-[#1E1E1E] hover:text-[#436243] transition-colors">
               Inicio
             </Link>
             <Link to="/servicios" className="text-[#1E1E1E] hover:text-[#436243] transition-colors">
               Servicios
+            </Link>
+            <Link to="/recursos" className="text-[#1E1E1E] hover:text-[#436243] transition-colors">
+              Recursos
+            </Link>
+            <Link to="/preguntas-frecuentes" className="text-[#1E1E1E] hover:text-[#436243] transition-colors">
+              Preguntas frecuentes
             </Link>
             <Link to="/contacto" className="text-[#1E1E1E] hover:text-[#436243] transition-colors">
               Contacto
@@ -43,8 +49,9 @@ export function Navigation() {
           {/* Mobile Menu Button */}
           <button
             onClick={() => setIsMenuOpen(!isMenuOpen)}
-            className="md:hidden p-2 text-[#1E1E1E]"
-            aria-label="Toggle menu"
+            className="p-2 text-[#1E1E1E] lg:hidden"
+            aria-label={isMenuOpen ? "Cerrar menú" : "Abrir menú"}
+            aria-expanded={isMenuOpen}
           >
             {isMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
           </button>
@@ -52,7 +59,7 @@ export function Navigation() {
 
         {/* Mobile Menu */}
         {isMenuOpen && (
-          <div className="md:hidden pb-6 space-y-4">
+          <div className="space-y-4 pb-6 lg:hidden">
             <Link
               to="/"
               onClick={() => setIsMenuOpen(false)}
@@ -66,6 +73,20 @@ export function Navigation() {
               className="block text-[#1E1E1E] hover:text-[#436243] transition-colors"
             >
               Servicios
+            </Link>
+            <Link
+              to="/recursos"
+              onClick={() => setIsMenuOpen(false)}
+              className="block text-[#1E1E1E] hover:text-[#436243] transition-colors"
+            >
+              Recursos
+            </Link>
+            <Link
+              to="/preguntas-frecuentes"
+              onClick={() => setIsMenuOpen(false)}
+              className="block text-[#1E1E1E] hover:text-[#436243] transition-colors"
+            >
+              Preguntas frecuentes
             </Link>
             <Link
               to="/contacto"
