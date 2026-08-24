@@ -24,7 +24,7 @@ export function ResourceDownloadForm({ resource }: ResourceDownloadFormProps) {
   const [status, setStatus] = useState<"idle" | "submitting" | "success" | "error">("idle");
   const [message, setMessage] = useState("");
 
-  const downloadUrl = `/downloads/${resource.slug}.pdf`;
+  const downloadUrl = `${import.meta.env.BASE_URL}downloads/${resource.slug}.pdf`;
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setLead((current) => ({ ...current, [event.target.name]: event.target.value }));
