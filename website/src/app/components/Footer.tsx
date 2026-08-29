@@ -1,7 +1,7 @@
 import { Link } from "react-router";
-import { Instagram, Facebook, MessageCircle } from "lucide-react";
+import { Instagram, Facebook, Mail, MessageCircle } from "lucide-react";
 import Group from "../../imports/Group6-13-1474";
-import { socialLinks, whatsappContact } from "../config/site";
+import { contactEmail, siteFeatures, socialLinks, whatsappContact } from "../config/site";
 
 export function Footer() {
   return (
@@ -21,6 +21,13 @@ export function Footer() {
             <p className="text-white/80">
               Acompañamos a tu familia en cada paso
             </p>
+            <a
+              href={`mailto:${contactEmail}`}
+              className="mt-3 inline-flex items-center gap-2 text-sm text-white/80 transition-colors hover:text-white"
+            >
+              <Mail className="size-4" aria-hidden="true" />
+              {contactEmail}
+            </a>
           </div>
 
           {/* Links */}
@@ -30,9 +37,11 @@ export function Footer() {
               <Link to="/servicios" className="block text-white/80 hover:text-white transition-colors">
                 Servicios
               </Link>
-              <Link to="/recursos" className="block text-white/80 hover:text-white transition-colors">
-                Recursos
-              </Link>
+              {siteFeatures.resources && (
+                <Link to="/recursos" className="block text-white/80 hover:text-white transition-colors">
+                  Recursos
+                </Link>
+              )}
               <Link to="/preguntas-frecuentes" className="block text-white/80 hover:text-white transition-colors">
                 Preguntas frecuentes
               </Link>

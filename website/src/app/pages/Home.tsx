@@ -2,7 +2,7 @@ import { Link } from "react-router";
 import { ArrowRight, BookOpen, Check, Globe, Heart, Scale, Stethoscope, Users } from "lucide-react";
 import heroImg from "figma:asset/26ac470c256aaee8ec07ea46ae1d337bf3b0b9ef.png";
 import { TestimonialsSection } from "../components/TestimonialsSection";
-import { consultationCta, siteLinks } from "../config/site";
+import { consultationCta, siteFeatures, siteLinks } from "../config/site";
 import { testimonials } from "../content/socialProof";
 import { PageMeta } from "../components/PageMeta";
 
@@ -107,7 +107,7 @@ export function Home() {
 
       <TestimonialsSection items={testimonials} />
 
-      {/* Featured guide */}
+      {siteFeatures.resources && siteFeatures.resourceDownloads && (
       <section className="py-16 lg:py-20" id="guia-gratuita">
         <div className="mx-auto max-w-6xl px-6 lg:px-8">
           <div className="grid overflow-hidden rounded-3xl border border-[#E8E0D5] bg-white shadow-sm lg:grid-cols-[0.8fr_1.2fr]">
@@ -148,6 +148,7 @@ export function Home() {
           </div>
         </div>
       </section>
+      )}
     </div>
   );
 }

@@ -1,5 +1,6 @@
 import { CheckCircle2, ExternalLink } from "lucide-react";
 import { PageMeta } from "../components/PageMeta";
+import { contactEmail } from "../config/site";
 
 const lawUrl = "https://www.diputados.gob.mx/LeyesBiblio/pdf/LFPDPPP.pdf";
 const regulationUrl = "https://www.diputados.gob.mx/LeyesBiblio/regley/Reg_LFPDPPP.pdf";
@@ -24,11 +25,11 @@ export function AvisoPrivacidad() {
         <div className="mx-auto max-w-4xl space-y-8 px-6 lg:px-8">
           <PrivacySection title="Estado comprobado del prototipo">
             <ul className="space-y-3">
-              <StatusItem>El formulario de Contacto conserva la información sólo en memoria del navegador.</StatusItem>
               <StatusItem>
-                Las descargas preparan un envío de nombre, correo y teléfono, pero no existe un endpoint
-                activo en el repositorio; sin él no se transmite información.
+                El formulario de Contacto prepara un correo dirigido a {contactEmail}. La información sólo
+                sale del sitio cuando la persona revisa y envía el mensaje desde su aplicación de correo.
               </StatusItem>
+              <StatusItem>El blog, la biblioteca de Recursos y las descargas están deshabilitados.</StatusItem>
               <StatusItem>No existe backend, base de datos, CRM o servicio de correo configurado.</StatusItem>
               <StatusItem>No se detectaron analytics, pasarela de pagos ni cookies activas de la aplicación.</StatusItem>
               <StatusItem>
@@ -57,7 +58,7 @@ export function AvisoPrivacidad() {
               <li>Identificación: nombre.</li>
               <li>Contacto: correo electrónico y número de WhatsApp.</li>
               <li>Contenido de la consulta: mensaje escrito libremente por la persona.</li>
-              <li>Solicitud de recurso: guía seleccionada, fecha y aceptación del aviso.</li>
+              <li>Solicitud de recurso: actualmente deshabilitada.</li>
               <li>
                 Datos técnicos de navegación y registros del servidor:
                 <strong> [PENDIENTE: confirmar hosting, campos y periodo de conservación]</strong>.
@@ -78,7 +79,6 @@ export function AvisoPrivacidad() {
             <p className="font-semibold">Finalidades primarias propuestas, sujetas a confirmación:</p>
             <ul className="mt-3 list-disc space-y-2 pl-6 text-[#1E1E1E]/80">
               <li>Recibir, identificar y responder solicitudes de información u orientación.</li>
-              <li>Gestionar la solicitud y entrega de recursos descargables.</li>
               <li>Contactar a la persona por el medio que elija para dar seguimiento a su solicitud.</li>
               <li>Gestionar una eventual relación de servicios y cumplir obligaciones aplicables.</li>
             </ul>
@@ -96,8 +96,8 @@ export function AvisoPrivacidad() {
           <PrivacySection title="4. Opciones para limitar el uso o divulgación">
             <p>
               La persona podrá solicitar la baja de comunicaciones secundarias o limitar usos no
-              indispensables mediante <strong>[PENDIENTE: correo o formulario específico]</strong>. Alium Care
-              deberá indicar el tiempo de atención y conservar evidencia de la solicitud.
+              indispensables mediante <a className="font-semibold text-[#436243] underline" href={`mailto:${contactEmail}`}>{contactEmail}</a>.
+              Alium Care deberá indicar el tiempo de atención y conservar evidencia de la solicitud.
             </p>
           </PrivacySection>
 
@@ -117,9 +117,10 @@ export function AvisoPrivacidad() {
 
           <PrivacySection title="6. Personas encargadas, proveedores y transferencias">
             <p>
-              Contacto todavía no transmite información. Las descargas sólo enviarán datos cuando se configure
-              un endpoint externo. Antes de activarlo se deberán documentar el hosting, endpoint, correo, CRM,
-              base de datos, agenda, videollamada, almacenamiento, WhatsApp y cualquier futuro proveedor.
+              El formulario de Contacto utiliza la aplicación de correo elegida por la persona para enviar el
+              mensaje a {contactEmail}. El blog y las descargas están deshabilitados. Antes de incorporar un
+              envío directo deberán documentarse el hosting, endpoint, correo, CRM, base de datos, agenda,
+              videollamada, almacenamiento, WhatsApp y cualquier futuro proveedor.
             </p>
             <p className="mt-4">
               <strong>[PENDIENTE]</strong> Clasificar cada proveedor como persona encargada o tercero,
@@ -131,9 +132,10 @@ export function AvisoPrivacidad() {
 
           <PrivacySection title="7. Conservación, bloqueo y supresión">
             <p>
-              Hoy no existe almacenamiento de servidor configurado: los datos escritos se pierden al recargar
-              la página o después de limpiar el formulario. Cuando se active el endpoint de descargas, deberán
-              declararse su almacenamiento y plazos. Esto no cubre mensajes enviados voluntariamente por WhatsApp.
+              Hoy no existe almacenamiento de servidor configurado en el sitio. Los mensajes que la persona
+              envíe voluntariamente por correo o WhatsApp quedan sujetos al almacenamiento y conservación de
+              esos canales y sus proveedores. Si se activan las descargas, deberán declararse su almacenamiento
+              y plazos.
             </p>
             <p className="mt-4">
               Antes de operar, Alium Care deberá aprobar una matriz de conservación por dato y finalidad.
@@ -148,7 +150,8 @@ export function AvisoPrivacidad() {
               La persona titular podrá solicitar acceso, rectificación, cancelación u oposición, así como
               revocar su consentimiento, ante
               <strong> [PENDIENTE: persona o departamento de datos personales]</strong> por medio de
-              <strong> [PENDIENTE: correo monitoreado y medio alterno]</strong>.
+              <a className="font-semibold text-[#436243] underline" href={`mailto:${contactEmail}`}> {contactEmail}</a>.
+              Falta confirmar un medio alterno.
             </p>
             <p className="mt-4">La solicitud deberá incluir:</p>
             <ul className="mt-3 list-disc space-y-2 pl-6 text-[#1E1E1E]/80">
@@ -176,8 +179,8 @@ export function AvisoPrivacidad() {
 
           <PrivacySection title="10. Cambios a este aviso">
             <p>
-              Las modificaciones se comunicarán mediante
-              <strong> [PENDIENTE: URL definitiva y, cuando corresponda, correo u otro canal]</strong>. La
+              Las modificaciones se comunicarán mediante la URL definitiva del aviso y, cuando corresponda,
+              mediante {contactEmail}. La
               versión publicada deberá indicar fecha de entrada en vigor y fecha de última actualización.
             </p>
           </PrivacySection>

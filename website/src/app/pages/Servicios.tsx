@@ -4,7 +4,7 @@ import nursingImg from "figma:asset/eab73e75ce8c25a446a0bedc62b77f0b569daef1.png
 import medicalImg from "figma:asset/63fc8ff656a37c32004a18650478a2cc88ddd638.png";
 import legalImg from "figma:asset/c0e4203759f6966b6786a263de5e22650deeadd0.png";
 import { TeamSection } from "../components/TeamSection";
-import { siteLinks } from "../config/site";
+import { siteFeatures, siteLinks } from "../config/site";
 import { teamMembers } from "../content/socialProof";
 import { PageMeta } from "../components/PageMeta";
 
@@ -120,7 +120,7 @@ export function Servicios() {
         </div>
       </section>
 
-      <TeamSection items={teamMembers} />
+      {siteFeatures.team && <TeamSection items={teamMembers} />}
 
       {/* CTA Section */}
       <section className="py-20">

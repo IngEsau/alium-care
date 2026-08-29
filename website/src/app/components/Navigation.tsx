@@ -2,7 +2,7 @@ import { Link } from "react-router";
 import { Menu, X } from "lucide-react";
 import { useState } from "react";
 import Group from "../../imports/Group6";
-import { consultationCta } from "../config/site";
+import { consultationCta, siteFeatures } from "../config/site";
 
 export function Navigation() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -29,9 +29,11 @@ export function Navigation() {
             <Link to="/servicios" className="text-[#1E1E1E] hover:text-[#436243] transition-colors">
               Servicios
             </Link>
-            <Link to="/recursos" className="text-[#1E1E1E] hover:text-[#436243] transition-colors">
-              Recursos
-            </Link>
+            {siteFeatures.resources && (
+              <Link to="/recursos" className="text-[#1E1E1E] hover:text-[#436243] transition-colors">
+                Recursos
+              </Link>
+            )}
             <Link to="/preguntas-frecuentes" className="text-[#1E1E1E] hover:text-[#436243] transition-colors">
               Preguntas frecuentes
             </Link>
@@ -74,13 +76,15 @@ export function Navigation() {
             >
               Servicios
             </Link>
-            <Link
-              to="/recursos"
-              onClick={() => setIsMenuOpen(false)}
-              className="block text-[#1E1E1E] hover:text-[#436243] transition-colors"
-            >
-              Recursos
-            </Link>
+            {siteFeatures.resources && (
+              <Link
+                to="/recursos"
+                onClick={() => setIsMenuOpen(false)}
+                className="block text-[#1E1E1E] hover:text-[#436243] transition-colors"
+              >
+                Recursos
+              </Link>
+            )}
             <Link
               to="/preguntas-frecuentes"
               onClick={() => setIsMenuOpen(false)}

@@ -2,7 +2,7 @@ import { ArrowLeft, ArrowRight, Clock3 } from "lucide-react";
 import { Link, useParams } from "react-router";
 import { PageMeta } from "../components/PageMeta";
 import { ResourceDownloadForm } from "../components/ResourceDownloadForm";
-import { siteLinks } from "../config/site";
+import { siteFeatures, siteLinks } from "../config/site";
 import { getResourceBySlug, resources } from "../content/resources";
 
 export function RecursoDetalle() {
@@ -93,7 +93,7 @@ export function RecursoDetalle() {
             </aside>
           </article>
 
-          <ResourceDownloadForm resource={resource} />
+          {siteFeatures.resourceDownloads && <ResourceDownloadForm resource={resource} />}
         </div>
 
         <section className="mx-auto mt-16 max-w-7xl px-6 lg:px-8" aria-labelledby="related-heading">

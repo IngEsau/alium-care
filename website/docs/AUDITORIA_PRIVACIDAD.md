@@ -1,15 +1,15 @@
 # Auditoría de privacidad de Alium Care
 
-**Fecha de corte:** 23 de agosto de 2026
+**Fecha de corte:** 29 de agosto de 2026
 
 **Alcance:** código fuente local de `website/`; no incluye infraestructura ni tráfico de un dominio en producción.
 **Naturaleza:** diagnóstico técnico y de producto; requiere validación jurídica y operativa antes de publicar el aviso definitivo.
 
 ## Conclusión ejecutiva
 
-El repositorio contiene una aplicación web estática de React/Vite. No hay backend, base de datos, CRM, analytics, pasarela de pagos ni servicio de envío de correo. El formulario de Contacto sigue siendo una simulación. Los formularios de descarga ya preparan una petición a un endpoint configurable, pero el repositorio no contiene una URL ni proveedor activo; por ello todavía no transmiten información ni pueden comprobar la llegada de correos.
+El repositorio contiene una aplicación web estática de React/Vite. No hay backend, base de datos, CRM, analytics, pasarela de pagos ni servicio de envío de correo. El formulario de Contacto prepara un `mailto:` dirigido a `alium.caremx@gmail.com`: el mensaje sólo se transmite cuando la persona lo revisa y envía desde su aplicación de correo. El blog, la biblioteca de Recursos y las descargas están deshabilitados; los PDF se conservan fuera de `public/` y no forman parte del sitio compilado.
 
-El principal riesgo inmediato es de expectativa y diseño: el formulario invita a describir una situación de salud y muestra mensajes que prometen contacto y confidencialidad, aunque no existe todavía un flujo operativo que soporte esas promesas. Además, cada visita carga fuentes desde Adobe Typekit y Google Fonts, y falta identificar el hosting de producción y sus registros.
+El principal riesgo inmediato es operativo: `mailto:` depende de que la persona tenga una aplicación de correo configurada y pulse Enviar, por lo que el sitio no puede confirmar recepción ni entrega. Además, cada visita carga fuentes desde Adobe Typekit y Google Fonts, y falta identificar el hosting de producción y sus registros.
 
 El aviso integral puede prepararse como molde, pero no puede considerarse jurídicamente final mientras falten la identidad y domicilio completos de la persona responsable, el canal ARCO y las decisiones sobre proveedores, finalidades, conservación, seguridad y datos sensibles.
 
@@ -19,11 +19,9 @@ El aviso integral puede prepararse como molde, pero no puede considerarse juríd
 Persona usuaria
   → Contacto: escribe nombre, email, WhatsApp y mensaje
     → los valores viven temporalmente en useState
-    → submit muestra alert() y vacía el estado; no transmite
-  → Descarga: escribe nombre, email y teléfono y acepta el aviso
-    → sin VITE_RESOURCE_LEAD_ENDPOINT muestra un error y no transmite
-    → con endpoint configurado realiza POST JSON
-    → sólo después de una respuesta 2xx inicia la descarga del PDF
+    → submit abre un borrador mailto: dirigido a alium.caremx@gmail.com
+    → sólo se transmite cuando la persona pulsa Enviar en su aplicación de correo
+  → Blog, Recursos y descargas: deshabilitados
 ```
 
 Las salidas a WhatsApp, redes sociales y `mailto:` ocurren sólo cuando la persona pulsa un enlace. Esas conversaciones ya quedan sujetas a los sistemas y prácticas del proveedor elegido, no al formulario de este sitio.
@@ -32,16 +30,16 @@ Las salidas a WhatsApp, redes sociales y `mailto:` ocurren sólo cuando la perso
 
 | Eslabón | Estado comprobado | Evidencia local | Riesgo o decisión pendiente |
 | --- | --- | --- | --- |
-| Web | SPA estática React 18 + Vite 6, con rutas Inicio, Servicios, Recursos, detalle de recurso, Preguntas frecuentes, Contacto y Aviso de privacidad. | [`package.json`](../package.json), [`routes.tsx`](../src/app/routes.tsx) | Falta identificar hosting, CDN, DNS, país/región, logs y retención de producción. |
-| Formularios | Contacto conserva nombre, email, WhatsApp y mensaje en memoria y simula el envío. Recursos solicita nombre, email y teléfono, pero sólo intenta transmitirlos cuando existe `VITE_RESOURCE_LEAD_ENDPOINT`. | [`Contacto.tsx`](../src/app/pages/Contacto.tsx), [`ResourceDownloadForm.tsx`](../src/app/components/ResourceDownloadForm.tsx) | Falta aprobar y configurar el receptor. El mensaje libre de Contacto puede contener datos de salud propios o de terceros. |
+| Web | SPA estática React 18 + Vite 6, con rutas visibles de Inicio, Servicios, Preguntas frecuentes, Contacto y Aviso de privacidad. Blog y Recursos redirigen a Inicio. | [`package.json`](../package.json), [`routes.tsx`](../src/app/routes.tsx) | Falta identificar hosting, CDN, DNS, país/región, logs y retención de producción. |
+| Formularios | Contacto conserva nombre, email, WhatsApp y mensaje en memoria y prepara un `mailto:` a `alium.caremx@gmail.com`. Recursos está deshabilitado. | [`Contacto.tsx`](../src/app/pages/Contacto.tsx), [`site.ts`](../src/app/config/site.ts) | `mailto:` no confirma envío ni recepción. El mensaje libre todavía puede contener datos de salud propios o de terceros pese a la advertencia visible. |
 | Base de datos | No existe esquema, ORM, migraciones, credenciales ni conexión. | Búsqueda completa del repositorio. | Seleccionar tecnología, región, cifrado, roles, respaldos, retención y borrado antes de activar formularios. |
 | Cookies | La aplicación activa no crea cookies. Un componente genérico de sidebar no usado escribiría `sidebar_state` si algún día se integra. | [`sidebar.tsx`](../src/app/components/ui/sidebar.tsx) | Auditar nuevamente el bundle y el dominio de producción. Documentar y controlar futuras tecnologías no esenciales. |
 | Analytics | No se detectaron Google Analytics, Tag Manager, Meta Pixel, Clarity, Hotjar, PostHog, Sentry ni equivalentes. | [`index.html`](../index.html) y búsqueda de imports/scripts/IDs. | Decidir si se incorporará alguno y evaluar identificadores, IP, finalidad, retención, región y clasificación del proveedor. |
-| APIs | Recursos incorpora un `fetch` POST condicionado a una variable de ambiente. No hay endpoint configurado ni backend en el repositorio. | [`ResourceDownloadForm.tsx`](../src/app/components/ResourceDownloadForm.tsx), [`.env.example`](../.env.example) | Seleccionar proveedor, revisar CORS, autenticación, validación, límites, registros, incidentes y subprocesadores antes de habilitarlo. |
+| APIs | El componente inactivo de Recursos conserva un `fetch` POST condicionado a una variable de ambiente. No hay endpoint configurado ni backend en el repositorio. | [`ResourceDownloadForm.tsx`](../src/app/components/ResourceDownloadForm.tsx), [`.env.example`](../.env.example) | Auditar y probar proveedor, CORS, validación, límites, registros e incidentes antes de reactivar la función. |
 | Proveedores | Cada visita solicita CSS/fuentes a Adobe Typekit y Google Fonts/Gstatic. Figma y las imágenes de Unsplash están empaquetados localmente. | [`fonts.css`](../src/styles/fonts.css), [`index.css`](../src/styles/index.css) | Valorar autoalojar fuentes o documentar las solicitudes. Faltan contratos y clasificación del hosting y proveedores futuros. |
 | Pagos | No existe checkout, precio, facturación, tokenización ni SDK de pagos. | Búsqueda completa del repositorio y dependencias. | No incluir pagos en el aviso hasta diseñar el flujo. Si se incorpora, evitar almacenar tarjeta completa y documentar proveedor, datos visibles, transferencias y retención fiscal. |
-| Emails | El sitio no envía correo por sí mismo; publica `alium.caremx@gmail.com` mediante `mailto:` y espera que el futuro endpoint notifique a un buzón o CRM. | [`Contacto.tsx`](../src/app/pages/Contacto.tsx), [`INTEGRACION_DESCARGAS.md`](./INTEGRACION_DESCARGAS.md) | Confirmar proveedor, destinatario, acceso del personal, MFA, conservación, pruebas de entrega y si el buzón será canal ARCO. |
-| Almacenamiento | Contacto y Descargas conservan temporalmente los valores en memoria React. Sin endpoint no hay persistencia del lado de Alium Care. El navegador puede conservar autofill por decisión propia. | Estado local en [`Contacto.tsx`](../src/app/pages/Contacto.tsx) y [`ResourceDownloadForm.tsx`](../src/app/components/ResourceDownloadForm.tsx). | Definir ubicaciones, permisos, cifrado, respaldos y conservación en el sistema receptor. |
+| Emails | El sitio prepara mensajes a `alium.caremx@gmail.com` mediante `mailto:`, pero no los envía ni confirma su entrega. | [`Contacto.tsx`](../src/app/pages/Contacto.tsx), [`site.ts`](../src/app/config/site.ts) | Confirmar acceso del personal, MFA, conservación, pruebas de recepción y si el buzón será el canal ARCO definitivo. |
+| Almacenamiento | Contacto conserva temporalmente los valores en memoria React. Los mensajes enviados quedan en el cliente y proveedor de correo; el sitio no tiene persistencia propia. | Estado local en [`Contacto.tsx`](../src/app/pages/Contacto.tsx). | Definir permisos, seguridad y conservación del buzón receptor. |
 | Eliminación | No existen registros de servidor que borrar. Vaciar `useState` sólo limpia la interfaz. WhatsApp y correo quedan fuera del control técnico del sitio. | Manejador `handleSubmit` del formulario de Contacto. | Aprobar matriz de conservación; bloquear al terminar la finalidad; suprimir después del plazo aplicable; propagar bajas a copias, respaldos y proveedores; conservar evidencia. |
 | ARCO | No hay persona/departamento designado, canal específico, formulario, acuse, procedimiento ni bitácora. | Antes de esta iteración, el enlace de privacidad estaba inactivo. | Nombrar responsable interno, correo monitoreado y medio alterno; documentar identidad, representación, plazos, entregas y negativas. |
 
@@ -53,8 +51,7 @@ Las salidas a WhatsApp, redes sociales y `mailto:` ocurren sólo cuando la perso
 - Correo electrónico.
 - Número de WhatsApp.
 - Mensaje libre sobre una situación familiar o de cuidados.
-- Teléfono para solicitar la descarga de un recurso.
-- Recurso solicitado, fecha de envío y aceptación del aviso cuando se habilite el endpoint.
+- La solicitud de recursos y descargas está deshabilitada.
 
 El estado de salud presente o futuro es un dato personal sensible. Aunque el campo no lo pida de forma nominal, el contexto y el placeholder pueden provocar que la persona escriba diagnósticos, síntomas, tratamientos, expedientes o información de un familiar.
 
@@ -63,7 +60,7 @@ El estado de salud presente o futuro es un dato personal sensible. Aunque el cam
 - Adobe Typekit: `use.typekit.net` y `p.typekit.net`.
 - Google Fonts/Gstatic: `fonts.googleapis.com` y `fonts.gstatic.com`.
 - Hosting/CDN/DNS/certificados/logs: no identificables desde el repositorio.
-- Endpoint de leads y proveedor de correo/CRM: todavía no configurados; sólo recibirán datos después de una acción de envío.
+- Endpoint de leads y CRM: no configurados; el componente que los utilizaría está deshabilitado.
 
 ### Terceros sólo por acción de la persona
 
@@ -78,11 +75,10 @@ El código no envía el contenido de los formularios a las fuentes tipográficas
 
 | Mensaje actual | Comportamiento real | Acción recomendada |
 | --- | --- | --- |
-| “Te contactaremos pronto” | Ningún dato sale del navegador. | Mientras sea prototipo, indicar que es una simulación; al activar, conectar un flujo real y auditable. |
-| “Tu información es confidencial. Solo la usamos para orientarte mejor.” | No existe tratamiento operativo, aviso simplificado ni controles verificables en el repositorio. | Sustituir por información precisa y verificable cuando se defina el flujo. |
-| “Cuéntanos sobre tu situación” | Puede inducir datos sensibles propios o de terceros. | Mostrar “No incluyas diagnósticos, expedientes ni otros datos de salud” en el primer contacto. |
+| “Continuar por correo” | Abre un borrador dirigido a `alium.caremx@gmail.com`; la persona todavía debe enviarlo. | Mantener visible esta condición y probar el comportamiento en los navegadores objetivo. |
+| Advertencia de no incluir datos clínicos | Reduce la invitación explícita a compartir datos sensibles, pero no impide que se escriban. | Definir controles y canal seguro si se decide tratar datos de salud. |
 | WhatsApp obligatorio además de email | No existe justificación documentada de necesidad. | Confirmar necesidad y, si no es indispensable, dejarlo opcional. |
-| “Enviar y descargar” | Sin endpoint configurado, la interfaz muestra un error y no entrega el archivo. | Configurar y auditar el receptor; probar respuesta HTTP y confirmar manualmente la llegada al buzón o CRM. |
+| Blog y descargas | Están ocultos y los PDF se encuentran fuera de `public/`. | Mantenerlos deshabilitados hasta contar con contenido y flujo de datos aprobados. |
 
 ## Base normativa aplicada
 

@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { MapPin, Mail, Instagram, Facebook, MessageCircle, Shield } from "lucide-react";
-import { socialLinks, whatsappContact } from "../config/site";
+import { contactEmail, socialLinks, whatsappContact } from "../config/site";
 import { PageMeta } from "../components/PageMeta";
 
 export function Contacto() {
@@ -13,8 +13,18 @@ export function Contacto() {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    alert("¡Gracias por tu mensaje! Te contactaremos pronto.");
-    setFormData({ name: "", email: "", whatsapp: "", message: "" });
+
+    const subject = `Solicitud de información de ${formData.name}`;
+    const body = [
+      `Nombre: ${formData.name}`,
+      `Correo de contacto: ${formData.email}`,
+      `WhatsApp: ${formData.whatsapp}`,
+      "",
+      "Mensaje:",
+      formData.message,
+    ].join("\n");
+
+    window.location.href = `mailto:${contactEmail}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -37,7 +47,7 @@ export function Contacto() {
             Estamos aquí para ti
           </h1>
           <p className="text-lg lg:text-xl text-[#1E1E1E]/70">
-            Escríbenos, cuéntanos tu situación y te orientamos sin compromiso.
+            Escríbenos e indícanos de forma general qué orientación buscas.
           </p>
         </div>
       </section>
@@ -112,15 +122,23 @@ export function Contacto() {
                     required
                     rows={6}
                     className="w-full px-4 py-3 rounded-lg border border-[#E8E0D5] bg-white text-[#1E1E1E] focus:outline-none focus:ring-2 focus:ring-[#436243] resize-none"
-                    placeholder="Cuéntanos sobre tu situación..."
+                    placeholder="Describe de forma general cómo podemos ayudarte..."
                   />
+                  <p className="mt-2 text-xs leading-relaxed text-[#1E1E1E]/60">
+                    No incluyas diagnósticos, expedientes, tratamientos ni otros datos de salud.
+                  </p>
                 </div>
+
+                <p className="text-sm leading-relaxed text-[#1E1E1E]/65">
+                  Al continuar se abrirá tu aplicación de correo con el mensaje dirigido a {contactEmail}.
+                  Revisa la información y pulsa Enviar desde tu correo.
+                </p>
 
                 <button
                   type="submit"
                   className="w-full px-8 py-3.5 bg-[#436243] text-white rounded-lg hover:bg-[#5F775D] transition-colors"
                 >
-                  Enviar mensaje
+                  Continuar por correo
                 </button>
               </form>
             </div>
@@ -142,8 +160,8 @@ export function Contacto() {
                   <ContactInfoItem
                     icon={<Mail className="w-6 h-6 text-[#436243]" />}
                     label="Email"
-                    value="alium.caremx@gmail.com"
-                    link="mailto:alium.caremx@gmail.com"
+                    value={contactEmail}
+                    link={`mailto:${contactEmail}`}
                   />
                   <ContactInfoItem
                     icon={<MapPin className="w-6 h-6 text-[#436243]" />}
@@ -188,7 +206,7 @@ export function Contacto() {
                   <Shield className="w-6 h-6 text-[#436243] flex-shrink-0 mt-1" />
                   <div>
                     <p className="text-sm text-[#1E1E1E]/80 leading-relaxed">
-                      <strong className="text-[#436243]">Tu información es confidencial.</strong> Solo la usamos para orientarte mejor.
+                      El formulario no almacena ni envía datos directamente. El mensaje se prepara en tu aplicación de correo.
                     </p>
                   </div>
                 </div>

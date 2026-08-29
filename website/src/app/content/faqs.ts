@@ -37,7 +37,7 @@ export const serviceFaqs: readonly FaqItem[] = [
   {
     question: "¿Cómo puedo iniciar el contacto?",
     answer:
-      "Puedes utilizar el acceso directo a WhatsApp o consultar los datos publicados en la página de Contacto. Cuando el envío desde el sitio quede habilitado, también podrás iniciar tu solicitud mediante el formulario.",
+      "Puedes utilizar el acceso directo a WhatsApp, escribir a alium.caremx@gmail.com o utilizar el formulario de Contacto. El formulario abrirá tu aplicación de correo con el mensaje preparado para que puedas revisarlo y enviarlo.",
   },
   {
     question: "¿Cómo se protegerán mis datos personales?",

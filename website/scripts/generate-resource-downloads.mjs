@@ -7,7 +7,7 @@ import { resources } from "../src/app/content/resources.ts";
 
 const scriptDirectory = dirname(fileURLToPath(import.meta.url));
 const projectDirectory = dirname(scriptDirectory);
-const outputDirectory = join(projectDirectory, "public", "downloads");
+const outputDirectory = join(projectDirectory, "offline-resources", "downloads");
 const temporaryDirectory = await mkdtemp(join(tmpdir(), "alium-care-resources-"));
 
 await mkdir(outputDirectory, { recursive: true });
