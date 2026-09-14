@@ -29,9 +29,9 @@ export function Navigation() {
             <Link to="/servicios" className="text-[#1E1E1E] hover:text-[#436243] transition-colors">
               Servicios
             </Link>
-            {siteFeatures.resources && (
-              <Link to="/recursos" className="text-[#1E1E1E] hover:text-[#436243] transition-colors">
-                Recursos
+            {siteFeatures.blog && (
+              <Link to="/blog" className="text-[#1E1E1E] hover:text-[#436243] transition-colors">
+                Blog
               </Link>
             )}
             <Link to="/preguntas-frecuentes" className="text-[#1E1E1E] hover:text-[#436243] transition-colors">
@@ -76,13 +76,13 @@ export function Navigation() {
             >
               Servicios
             </Link>
-            {siteFeatures.resources && (
+            {siteFeatures.blog && (
               <Link
-                to="/recursos"
+                to="/blog"
                 onClick={() => setIsMenuOpen(false)}
                 className="block text-[#1E1E1E] hover:text-[#436243] transition-colors"
               >
-                Recursos
+                Blog
               </Link>
             )}
             <Link

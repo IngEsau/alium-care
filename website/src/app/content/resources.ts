@@ -1,154 +1,96 @@
-export type ResourceCategory = "Cuidados" | "Orientación médica" | "Derechos y previsión";
+export type ResourceCategory = "Cuidado del cuidador";
 
 export interface ResourceSection {
   heading: string;
   paragraphs?: readonly string[];
   bullets?: readonly string[];
+  ordered?: boolean;
 }
 
 export interface Resource {
   slug: string;
   title: string;
+  subtitle: string;
   description: string;
   excerpt: string;
   category: ResourceCategory;
   readingTime: string;
   featured?: boolean;
+  introduction: readonly string[];
   sections: readonly ResourceSection[];
+  conclusion: readonly string[];
 }
 
 export const resources: readonly Resource[] = [
   {
-    slug: "cinco-preguntas-para-el-equipo-medico",
-    title: "5 preguntas para conversar mejor con el equipo médico",
+    slug: "la-soledad-del-cuidador",
+    title: "La Soledad del Cuidador",
+    subtitle: "El Impacto Invisible en el Binomio y el Camino hacia el Cuidado Compartido",
     description:
-      "Una guía práctica para ordenar dudas, aprovechar la consulta y salir con próximos pasos más claros.",
+      "El Impacto Invisible en el Binomio y el Camino hacia el Cuidado Compartido.",
     excerpt:
-      "Prepara una conversación más clara con el equipo de salud y registra la información que tu familia necesita para decidir.",
-    category: "Orientación médica",
-    readingTime: "5 min de lectura",
+      "Cuidar al cuidador no es un lujo, es una necesidad terapéutica esencial.",
+    category: "Cuidado del cuidador",
+    readingTime: "7 min de lectura",
     featured: true,
+    introduction: [
+      "En el ámbito de la geriatría y la gerontología clínica, solemos centrar nuestra mirada en el paciente: sus patologías, su tratamiento farmacológico y su deterioro funcional.",
+      "Sin embargo, desde la Tanatología Humanista y las directrices de la Sociedad Española de Geriatría y Gerontología (SEGG) y el INGER (Instituto Nacional de Geriatría y Gerontología) en México, sabemos que el paciente nunca es una isla. Existe una entidad indisoluble llamada «Binomio Paciente-Cuidador».",
+      "Cuando el cuidador —generalmente un familiar y, aproximadamente en 94 de cada 100 casos, una mujer— comienza a experimentar la soledad, esta no solo afecta su salud mental, sino que altera la homeostasis (el equilibrio) de todo el núcleo familiar y, de forma directa, la calidad de vida de la persona mayor a su cargo.",
+    ],
     sections: [
       {
-        heading: "Antes de la conversación",
+        heading: "La soledad acompañada: un fenómeno silencioso",
         paragraphs: [
-          "Cuando una familia recibe mucha información en poco tiempo es normal olvidar detalles o no saber por dónde empezar. Antes de la consulta, escriban en una sola hoja qué cambió, qué preocupa más y qué decisión necesitan tomar. Elegir a una persona para anotar permite que las demás escuchen con atención.",
-          "Lleven una lista actualizada de medicamentos, estudios recientes y dudas. No es necesario contar toda la historia desde el inicio: una síntesis con fechas, síntomas relevantes y cambios observados ayuda a enfocar la conversación.",
+          "La soledad del cuidador es paradójica. A pesar de estar físicamente acompañado la mayor parte del día por el paciente, el cuidador experimenta un aislamiento social y emocional profundo. Instituciones como la Sociedad Argentina de Geriatría y Gerontología (SAGG) han advertido que este aislamiento es precursor del síndrome de sobrecarga del cuidador o síndrome del cuidador quemado (burnout).",
+          "Esta soledad nace de varios factores:",
         ],
-      },
-      {
-        heading: "Las cinco preguntas",
+        ordered: true,
         bullets: [
-          "¿Cuál es el objetivo principal del tratamiento o cuidado que se propone?",
-          "¿Qué beneficios, molestias o riesgos debemos vigilar y en qué plazo podrían aparecer?",
-          "¿Qué alternativas existen y qué podría ocurrir si decidimos esperar o no continuar?",
-          "¿Qué podemos hacer en casa y cuáles son las señales para pedir ayuda profesional?",
-          "¿Cuál es el siguiente paso, quién le dará seguimiento y cuándo debemos volver a consultar?",
+          "La pérdida de la reciprocidad: en enfermedades neurodegenerativas o cualquier otra que se considere crónico-degenerativa y que impacte en la autonomía y la reserva funcional del paciente, el cuidador deja de ser reconocido o validado por su ser querido, rompiendo el vínculo emocional bidireccional.",
+          "El estrechamiento del mundo social: las redes de apoyo —amistades, otros familiares, cuidadores formales o informales— suelen alejarse por miedo, incomodidad o porque el cuidador deja de asistir a eventos sociales por falta de tiempo o culpa.",
+          "La carga de la toma de decisiones: sentir que la vida, la muerte y el bienestar de otra persona dependen exclusivamente de un solo criterio genera un peso existencial devastador.",
         ],
       },
       {
-        heading: "Si una respuesta no queda clara",
+        heading: "El impacto en el binomio: el efecto espejo",
         paragraphs: [
-          "Pedir que una explicación se repita con palabras sencillas es válido. También pueden confirmar lo entendido con una frase como: “Entonces, el siguiente paso es…”. Si aparece un término desconocido, anótenlo y soliciten una explicación antes de avanzar.",
-          "Cuando haya varias opciones, pregunten qué cambia en la vida cotidiana con cada una. Relacionar la información clínica con prioridades como comodidad, independencia, traslados o carga de cuidados facilita una decisión compartida.",
+          "Desde una perspectiva de geriatría basada en evidencia, se ha demostrado que el bienestar del cuidador es el mejor predictor de la salud del paciente. Cuando el cuidador está solo y agotado, se produce un «efecto espejo»:",
+        ],
+        bullets: [
+          "Aumento de BPSD (síntomas psicológicos y conductuales de la demencia): un cuidador estresado o deprimido transmite ansiedad. El paciente, aunque tenga deterioro cognitivo, percibe la tensión ambiental, lo que aumenta su agitación o agresividad.",
+          "Riesgo de maltrato por omisión: la soledad extrema puede llevar al embotamiento afectivo, donde el cuidador deja de responder con empatía a las necesidades del paciente, no por falta de amor, sino por agotamiento de sus reservas psicológicas.",
+          "Institucionalización precoz: la falta de una red de apoyo sólida es la causa principal de que el binomio se rompa y el paciente deba ser ingresado en una residencia de forma no planificada.",
         ],
       },
       {
-        heading: "Después de la consulta",
+        heading: "10 consejos para el cuidado del binomio paciente-cuidador",
         paragraphs: [
-          "Revisen las notas en familia y separen las acciones inmediatas de las dudas que siguen abiertas. Guarden indicaciones, nombres y fechas en un lugar accesible. Si algo importante no coincide con lo que entendieron, contacten nuevamente al equipo tratante antes de modificar medicamentos o cuidados.",
+          "Basándonos en los manuales de buena práctica de la Academia Mexicana de Geriatría y los consensos iberoamericanos más recientes, proponemos estas estrategias para proteger la salud de este binomio:",
+        ],
+        ordered: true,
+        bullets: [
+          "Reconocimiento y validación: el primer paso es admitir: «Cuidar me agota y me siento solo». Validar la emoción no es traicionar al paciente; es un acto de honestidad clínica y humana necesario para buscar ayuda.",
+          "La regla del 3 (red de apoyo): ningún cuidado debe recaer en una sola persona. Es vital organizar una red donde al menos tres personas tengan roles activos: una cuida, otra provee finanzas o compras y otra gestiona trámites médicos.",
+          "Formación especializada: el miedo nace del desconocimiento. Acudir a talleres impartidos por el Consejo Nacional de Geriatría o asociaciones locales reduce la ansiedad al entender qué esperar de la enfermedad.",
+          "Establecer espacios de respiro: el cuidador debe tener, por prescripción médica, al menos de cuatro a seis horas a la semana de desvinculación total del cuidado para realizar actividades que nutran su identidad personal, no para hacer recados del paciente. Desde mi perspectiva y experiencia personal y profesional, incluso ese tiempo resulta insuficiente.",
+          "Comunicación asertiva con la familia: es fundamental expresar necesidades claras: «Necesito que el sábado te encargues tú para que yo pueda salir», en lugar de esperar a que la ayuda llegue por intuición. Esto requiere, idealmente, implementar un rol de turnos previamente designado y acordado.",
+          "Cuidado de la salud propia: el cuidador debe cumplir con sus propios calendarios de vacunación, revisiones médicas y ejercicio físico. Un cuidador enfermo es un paciente doble.",
+          "Fomentar la autonomía del paciente: en la medida de lo posible, permitir que el paciente realice tareas por sí mismo. La sobreprotección acelera el deterioro del paciente y aumenta el cansancio del cuidador.",
+          "Atención psicológica o grupos de autoayuda: compartir la experiencia con otras personas que viven lo mismo —en grupos de apoyo de la SEGG o similares— rompe el aislamiento social y normaliza las emociones ambivalentes.",
+          "Planificación anticipada de decisiones: sentarse con el equipo de geriatría para decidir qué se hará en momentos de crisis evita el pánico y la soledad de la decisión de último minuto.",
+          "Acompañamiento espiritual o tanatológico: no se refiere solo a la religión, sino a encontrar sentido al proceso de cuidar y prepararse para los duelos parciales que ocurren durante el avance de la enfermedad.",
         ],
       },
     ],
-  },
-  {
-    slug: "organizar-cuidados-diarios-en-familia",
-    title: "Cómo organizar los cuidados diarios en familia",
-    description:
-      "Un punto de partida para repartir tareas, registrar cambios y evitar que toda la responsabilidad recaiga en una sola persona.",
-    excerpt:
-      "Convierte las necesidades diarias en tareas visibles y reparte responsabilidades de una manera que pueda revisarse cada semana.",
-    category: "Cuidados",
-    readingTime: "4 min de lectura",
-    sections: [
-      {
-        heading: "Hacer visible lo que implica cuidar",
-        paragraphs: [
-          "El cuidado suele percibirse como una sola tarea, aunque en realidad incluye medicamentos, alimentos, higiene, traslados, compras, citas, trámites y acompañamiento emocional. Escribir cada actividad permite dimensionar la carga y conversar sobre ella sin depender de la memoria.",
-          "Durante dos o tres días registren qué se hace, a qué hora y quién lo realiza. Incluyan tareas ocasionales, como recoger estudios o hablar con aseguradoras. El objetivo no es controlar a la familia, sino reconocer el trabajo real y detectar lo que necesita apoyo.",
-        ],
-      },
-      {
-        heading: "Un plan mínimo compartido",
-        bullets: [
-          "Lista de actividades diarias y semanales con una persona responsable y otra de respaldo.",
-          "Calendario común para consultas, medicamentos, compras y trámites.",
-          "Registro breve de cambios importantes, indicaciones y preguntas pendientes.",
-          "Datos de contacto del equipo tratante y un acuerdo familiar para situaciones urgentes.",
-          "Momentos de descanso reales para quien concentra el cuidado cotidiano.",
-        ],
-      },
-      {
-        heading: "Repartir sin exigir que todas las personas hagan lo mismo",
-        paragraphs: [
-          "No todas las personas pueden acompañar físicamente, pero algunas pueden resolver compras, cocinar, hacer llamadas, ordenar documentos o cubrir gastos concretos. Repartir por disponibilidad y habilidades suele funcionar mejor que intentar dividir todo en partes idénticas.",
-          "Las peticiones específicas ayudan: “¿Puedes acompañar el martes de 10 a 12?” es más fácil de responder que “necesito más apoyo”. Si alguien no puede asumir una tarea, conviene buscar otra opción sin dejar la necesidad invisible.",
-        ],
-      },
-      {
-        heading: "Revisar el plan",
-        paragraphs: [
-          "Las necesidades cambian. Una revisión breve cada semana permite redistribuir actividades, identificar señales de agotamiento y llevar preguntas más claras a profesionales de salud. Ningún formato reemplaza la valoración clínica; el plan familiar sirve para coordinarse y detectar cuándo hace falta pedir ayuda.",
-        ],
-      },
-    ],
-  },
-  {
-    slug: "documentos-para-una-situacion-de-salud",
-    title: "Documentos que conviene tener ubicados durante una situación de salud",
-    description:
-      "Una lista general para organizar información clínica, contactos y documentos sin esperar a una situación de presión.",
-    excerpt:
-      "Reúne información esencial en un expediente familiar sencillo y reduce búsquedas de último momento durante consultas o trámites.",
-    category: "Derechos y previsión",
-    readingTime: "4 min de lectura",
-    sections: [
-      {
-        heading: "Un expediente fácil de consultar",
-        paragraphs: [
-          "Tener documentos ubicados no significa anticipar el peor escenario. Significa reducir decisiones apresuradas y evitar que la información dependa de una sola persona. El expediente puede ser físico, digital o mixto, siempre que la familia sepa dónde está y quién puede acceder.",
-          "Empiecen por reunir copias legibles y una hoja de resumen. Eviten circular expedientes completos por grupos de mensajería; compartan únicamente lo necesario y revisen quién conserva cada copia.",
-        ],
-      },
-      {
-        heading: "Información que puede resultar útil",
-        bullets: [
-          "Identificación, datos de contacto y personas a quienes avisar.",
-          "Lista de medicamentos, alergias y profesionales tratantes, validada cuando sea posible.",
-          "Estudios, recetas e indicaciones recientes ordenados por fecha.",
-          "Datos de afiliación, seguro, pólizas y teléfonos para solicitar orientación.",
-          "Documentos de representación, voluntades o autorizaciones que hayan sido formalizados.",
-          "Registro de citas, trámites abiertos y preguntas pendientes.",
-        ],
-      },
-      {
-        heading: "Proteger la información",
-        paragraphs: [
-          "Los documentos de salud e identificación contienen datos personales que requieren cuidado. Usen contraseñas en archivos digitales, limiten los accesos y eliminen copias innecesarias. Si una persona externa ayuda con un trámite, definan qué necesita recibir y durante cuánto tiempo.",
-          "Revisen el expediente periódicamente para retirar versiones antiguas y actualizar teléfonos, medicamentos o responsables. Una copia desactualizada puede generar más confusión que no tenerla.",
-        ],
-      },
-      {
-        heading: "Cuándo pedir orientación",
-        paragraphs: [
-          "Los requisitos cambian según la institución y el trámite. Antes de firmar, entregar originales o asumir que un formato produce efectos legales, soliciten información a la institución correspondiente y, si es necesario, orientación profesional aplicable a su caso.",
-        ],
-      },
+    conclusion: [
+      "Cuidar al cuidador no es un lujo, es una necesidad terapéutica esencial. Mantener la integridad de la red de apoyo es la única forma de garantizar que el envejecimiento y el final de la vida se transiten con la dignidad que todo ser humano merece.",
+      "Si tú eres cuidador y te sientes solo, recuerda: pedir ayuda no es signo de debilidad, sino de responsabilidad hacia ti y hacia quien cuidas.",
     ],
   },
 ];
 
-export const featuredResource = resources.find((resource) => resource.featured) ?? resources[0];
+export const featuredResource = resources[0];
 
 export function getResourceBySlug(slug?: string) {
   return resources.find((resource) => resource.slug === slug);

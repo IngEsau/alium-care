@@ -29,7 +29,7 @@ export function AvisoPrivacidad() {
                 El formulario de Contacto prepara un correo dirigido a {contactEmail}. La información sólo
                 sale del sitio cuando la persona revisa y envía el mensaje desde su aplicación de correo.
               </StatusItem>
-              <StatusItem>El blog, la biblioteca de Recursos y las descargas están deshabilitados.</StatusItem>
+              <StatusItem>El blog publica un artículo informativo; las descargas permanecen deshabilitadas.</StatusItem>
               <StatusItem>No existe backend, base de datos, CRM o servicio de correo configurado.</StatusItem>
               <StatusItem>No se detectaron analytics, pasarela de pagos ni cookies activas de la aplicación.</StatusItem>
               <StatusItem>
@@ -118,8 +118,8 @@ export function AvisoPrivacidad() {
           <PrivacySection title="6. Personas encargadas, proveedores y transferencias">
             <p>
               El formulario de Contacto utiliza la aplicación de correo elegida por la persona para enviar el
-              mensaje a {contactEmail}. El blog y las descargas están deshabilitados. Antes de incorporar un
-              envío directo deberán documentarse el hosting, endpoint, correo, CRM, base de datos, agenda,
+              mensaje a {contactEmail}. El blog no solicita datos y las descargas están deshabilitadas. Antes de
+              incorporar un envío directo deberán documentarse el hosting, endpoint, correo, CRM, base de datos, agenda,
               videollamada, almacenamiento, WhatsApp y cualquier futuro proveedor.
             </p>
             <p className="mt-4">

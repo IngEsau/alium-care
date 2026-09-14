@@ -1,8 +1,8 @@
 import { Link } from "react-router";
-import { ArrowRight, BookOpen, Check, Globe, Heart, Scale, Stethoscope, Users } from "lucide-react";
+import { ArrowRight, BookOpen, Globe, Heart, Scale, Stethoscope, Users } from "lucide-react";
 import heroImg from "figma:asset/26ac470c256aaee8ec07ea46ae1d337bf3b0b9ef.png";
 import { TestimonialsSection } from "../components/TestimonialsSection";
-import { consultationCta, siteFeatures, siteLinks } from "../config/site";
+import { consultationCta, siteLinks } from "../config/site";
 import { testimonials } from "../content/socialProof";
 import { PageMeta } from "../components/PageMeta";
 
@@ -107,60 +107,7 @@ export function Home() {
 
       <TestimonialsSection items={testimonials} />
 
-      {siteFeatures.resources && siteFeatures.resourceDownloads && (
-      <section className="py-16 lg:py-20" id="guia-gratuita">
-        <div className="mx-auto max-w-6xl px-6 lg:px-8">
-          <div className="grid overflow-hidden rounded-3xl border border-[#E8E0D5] bg-white shadow-sm lg:grid-cols-[0.8fr_1.2fr]">
-            <div className="flex min-h-64 items-center justify-center bg-[#5F775D] p-10 text-white">
-              <div className="flex size-32 items-center justify-center rounded-full border border-white/25 bg-white/10">
-                <BookOpen className="size-16" aria-hidden="true" />
-              </div>
-            </div>
-            <div className="p-8 lg:p-12">
-              <p className="mb-3 text-sm font-semibold tracking-[0.14em] text-[#735F37] uppercase">Guía gratuita</p>
-              <h2 className="text-3xl leading-tight text-[#1E1E1E] lg:text-4xl">
-                5 preguntas para conversar mejor con el equipo médico
-              </h2>
-              <p className="mt-5 text-lg leading-relaxed text-[#1E1E1E]/70">
-                Una lectura breve para ordenar tus dudas, aprovechar la consulta y salir con próximos pasos más claros.
-              </p>
-              <ul className="mt-6 space-y-3 text-sm text-[#1E1E1E]/75">
-                <GuideBenefit text="Prepara la información esencial antes de la consulta." />
-                <GuideBenefit text="Identifica beneficios, riesgos, alternativas y seguimiento." />
-                <GuideBenefit text="Registra acuerdos para compartirlos con tu familia." />
-              </ul>
-              <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-                <Link
-                  to={siteLinks.featuredGuide}
-                  className="inline-flex items-center justify-center gap-2 rounded-lg bg-[#436243] px-6 py-3 text-white transition-colors hover:bg-[#5F775D]"
-                >
-                  Descargar la guía
-                  <ArrowRight className="size-5" aria-hidden="true" />
-                </Link>
-                <Link
-                  to={siteLinks.resources}
-                  className="inline-flex items-center justify-center rounded-lg border border-[#436243] px-6 py-3 text-[#436243] transition-colors hover:bg-[#436243] hover:text-white"
-                >
-                  Ver todos los recursos
-                </Link>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-      )}
     </div>
-  );
-}
-
-function GuideBenefit({ text }: { text: string }) {
-  return (
-    <li className="flex gap-3">
-      <span className="mt-0.5 flex size-5 shrink-0 items-center justify-center rounded-full bg-[#436243]/10">
-        <Check className="size-3.5 text-[#436243]" aria-hidden="true" />
-      </span>
-      <span>{text}</span>
-    </li>
   );
 }
 

@@ -1,9 +1,9 @@
 export const siteLinks = {
   consultation: "/contacto#formulario-contacto",
   services: "/servicios",
-  resources: "/recursos",
+  blog: "/blog",
   faq: "/preguntas-frecuentes",
-  featuredGuide: "/recursos/cinco-preguntas-para-el-equipo-medico",
+  featuredArticle: "/blog/la-soledad-del-cuidador",
   nursingService: "/servicios#enfermeria",
   medicalService: "/servicios#medicina",
   legalService: "/servicios#derecho",
@@ -12,7 +12,7 @@ export const siteLinks = {
 
 export const siteFeatures = {
   team: false,
-  resources: false,
+  blog: true,
   resourceDownloads: false,
 } as const;
 

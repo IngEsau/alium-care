@@ -4,8 +4,8 @@ import { Home } from "./pages/Home";
 import { Servicios } from "./pages/Servicios";
 import { Contacto } from "./pages/Contacto";
 import { AvisoPrivacidad } from "./pages/AvisoPrivacidad";
-import { Recursos } from "./pages/Recursos";
-import { RecursoDetalle } from "./pages/RecursoDetalle";
+import { Blog } from "./pages/Recursos";
+import { ArticuloDetalle } from "./pages/RecursoDetalle";
 import { PreguntasFrecuentes } from "./pages/PreguntasFrecuentes";
 import { siteFeatures } from "./config/site";
 
@@ -16,10 +16,11 @@ export const router = createHashRouter([
     children: [
       { index: true, Component: Home },
       { path: "servicios", Component: Servicios },
-      ...(siteFeatures.resources
+      ...(siteFeatures.blog
         ? [
-            { path: "recursos", Component: Recursos },
-            { path: "recursos/:slug", Component: RecursoDetalle },
+            { path: "blog", Component: Blog },
+            { path: "blog/:slug", Component: ArticuloDetalle },
+            { path: "recursos/*", element: <Navigate to="/blog" replace /> },
           ]
         : [
             { path: "recursos/*", element: <Navigate to="/" replace /> },

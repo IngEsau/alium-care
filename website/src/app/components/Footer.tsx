@@ -37,9 +37,9 @@ export function Footer() {
               <Link to="/servicios" className="block text-white/80 hover:text-white transition-colors">
                 Servicios
               </Link>
-              {siteFeatures.resources && (
-                <Link to="/recursos" className="block text-white/80 hover:text-white transition-colors">
-                  Recursos
+              {siteFeatures.blog && (
+                <Link to="/blog" className="block text-white/80 hover:text-white transition-colors">
+                  Blog
                 </Link>
               )}
               <Link to="/preguntas-frecuentes" className="block text-white/80 hover:text-white transition-colors">
