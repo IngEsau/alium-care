@@ -37,7 +37,7 @@ export function ArticuloDetalle() {
       <PageMeta title={`${article.title} | Alium Care`} description={article.description} type="article" />
 
       <header className="border-b border-[#E8E0D5] bg-white py-14 lg:py-20">
-        <div className="mx-auto max-w-4xl px-6 lg:px-8">
+        <div className="mx-auto max-w-4xl px-5 sm:px-6 lg:px-8">
           <nav className="mb-8 flex flex-wrap items-center gap-2 text-sm text-[#1E1E1E]/60" aria-label="Migas de pan">
             <Link to="/" className="hover:text-[#436243]">Inicio</Link>
             <span aria-hidden="true">/</span>
@@ -50,17 +50,20 @@ export function ArticuloDetalle() {
             <HeartHandshake className="size-7" aria-hidden="true" />
           </div>
           <p className="text-sm font-semibold tracking-[0.14em] text-[#735F37] uppercase">{article.category}</p>
-          <h1 className="mt-4 text-4xl leading-tight lg:text-6xl">{article.title}</h1>
-          <p className="mt-5 max-w-3xl text-xl leading-relaxed text-[#436243] lg:text-2xl">{article.subtitle}</p>
-          <p className="mt-7 flex items-center gap-2 text-sm text-[#1E1E1E]/55">
-            <Clock3 className="size-4" aria-hidden="true" />
-            {article.readingTime}
-          </p>
+          <h1 className="mt-4 break-words text-3xl leading-tight sm:text-4xl lg:text-5xl">{article.title}</h1>
+          {article.subtitle && <p className="mt-5 max-w-3xl text-xl leading-relaxed text-[#436243] lg:text-2xl">{article.subtitle}</p>}
+          {article.byline && <p className="mt-5 text-sm font-medium text-[#1E1E1E]/65">Firma: {article.byline}</p>}
+          {article.readingTime && (
+            <p className="mt-7 flex items-center gap-2 text-sm text-[#1E1E1E]/55">
+              <Clock3 className="size-4" aria-hidden="true" />
+              {article.readingTime}
+            </p>
+          )}
         </div>
       </header>
 
       <main className="py-14 lg:py-20">
-        <article className="mx-auto max-w-4xl rounded-3xl border border-[#E8E0D5] bg-white px-7 py-10 shadow-sm sm:px-10 lg:px-16 lg:py-14">
+        <article className="mx-4 max-w-4xl min-w-0 rounded-3xl border border-[#E8E0D5] bg-white px-5 py-8 shadow-sm sm:mx-6 sm:px-10 sm:py-10 lg:mx-auto lg:px-16 lg:py-14">
           <div className="space-y-5 text-lg leading-8 text-[#1E1E1E]/75">
             {article.introduction.map((paragraph) => <p key={paragraph}>{paragraph}</p>)}
           </div>
@@ -68,19 +71,24 @@ export function ArticuloDetalle() {
           {article.sections.map((section) => <ArticleSection key={section.heading} section={section} />)}
 
           <section className="mt-12 rounded-2xl bg-[#436243] p-7 text-white lg:p-9" aria-labelledby="article-conclusion">
-            <h2 id="article-conclusion" className="text-2xl lg:text-3xl">Conclusión</h2>
+            <h2 id="article-conclusion" className="text-2xl lg:text-3xl">{article.conclusionHeading ?? "Conclusión"}</h2>
             <div className="mt-5 space-y-4 leading-7 text-white/85">
               {article.conclusion.map((paragraph) => <p key={paragraph}>{paragraph}</p>)}
             </div>
           </section>
 
+          {article.closing && (
+            <div className="mt-10 space-y-4 text-lg leading-8 text-[#1E1E1E]/75">
+              {article.closing.map((paragraph) => <p key={paragraph}>{paragraph}</p>)}
+            </div>
+          )}
+
           <aside className="mt-10 border-t border-[#E8E0D5] pt-7 text-sm leading-relaxed text-[#1E1E1E]/60">
-            Este artículo ofrece información general y no sustituye una valoración médica, psicológica,
-            de enfermería o jurídica individual. Ante una urgencia, utiliza los servicios de emergencia de tu localidad.
+            {article.disclaimer ?? "Este artículo ofrece información general y no sustituye una valoración médica, psicológica, de enfermería o jurídica individual. Ante una urgencia, utiliza los servicios de emergencia de tu localidad."}
           </aside>
         </article>
 
-        <section className="mx-auto mt-14 max-w-4xl px-6 text-center lg:px-8">
+        {!article.closing && <section className="mx-auto mt-14 max-w-4xl px-6 text-center lg:px-8">
           <h2 className="text-3xl">¿Necesitas orientación?</h2>
           <p className="mx-auto mt-4 max-w-2xl text-[#1E1E1E]/70">
             Cuéntanos de forma general qué necesitas y te ayudaremos a identificar el canal más adecuado.
@@ -92,7 +100,7 @@ export function ArticuloDetalle() {
             Habla con nuestro equipo
             <ArrowRight className="size-5" aria-hidden="true" />
           </Link>
-        </section>
+        </section>}
       </main>
     </div>
   );
@@ -114,6 +122,9 @@ function ArticleSection({ section }: { section: ResourceSection }) {
           ))}
         </List>
       )}
+      {section.paragraphsAfter?.map((paragraph) => (
+        <p key={paragraph} className="mt-5 text-lg leading-8 text-[#1E1E1E]/75">{paragraph}</p>
+      ))}
     </section>
   );
 }

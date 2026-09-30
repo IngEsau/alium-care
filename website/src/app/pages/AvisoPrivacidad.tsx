@@ -29,7 +29,7 @@ export function AvisoPrivacidad() {
                 El formulario de Contacto prepara un correo dirigido a {contactEmail}. La información sólo
                 sale del sitio cuando la persona revisa y envía el mensaje desde su aplicación de correo.
               </StatusItem>
-              <StatusItem>El blog publica un artículo informativo; las descargas permanecen deshabilitadas.</StatusItem>
+              <StatusItem>El blog publica artículos informativos; las descargas permanecen deshabilitadas.</StatusItem>
               <StatusItem>No existe backend, base de datos, CRM o servicio de correo configurado.</StatusItem>
               <StatusItem>No se detectaron analytics, pasarela de pagos ni cookies activas de la aplicación.</StatusItem>
               <StatusItem>

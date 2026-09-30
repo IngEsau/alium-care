@@ -1,9 +1,10 @@
-export type ResourceCategory = "Cuidado del cuidador";
+export type ResourceCategory = "Cuidado del cuidador" | "Voluntad anticipada";
 
 export interface ResourceSection {
   heading: string;
   paragraphs?: readonly string[];
   bullets?: readonly string[];
+  paragraphsAfter?: readonly string[];
   ordered?: boolean;
 }
 
@@ -11,14 +12,18 @@ export interface Resource {
   slug: string;
   title: string;
   subtitle: string;
+  byline?: string;
   description: string;
   excerpt: string;
   category: ResourceCategory;
-  readingTime: string;
+  readingTime?: string;
   featured?: boolean;
   introduction: readonly string[];
   sections: readonly ResourceSection[];
+  conclusionHeading?: string;
   conclusion: readonly string[];
+  closing?: readonly string[];
+  disclaimer?: string;
 }
 
 export const resources: readonly Resource[] = [
@@ -87,6 +92,107 @@ export const resources: readonly Resource[] = [
       "Cuidar al cuidador no es un lujo, es una necesidad terapéutica esencial. Mantener la integridad de la red de apoyo es la única forma de garantizar que el envejecimiento y el final de la vida se transiten con la dignidad que todo ser humano merece.",
       "Si tú eres cuidador y te sientes solo, recuerda: pedir ayuda no es signo de debilidad, sino de responsabilidad hacia ti y hacia quien cuidas.",
     ],
+  },
+  {
+    slug: "la-voz-que-permanece-voluntad-anticipada",
+    title: "La voz que permanece: qué es la voluntad anticipada y por qué hablar de ella hoy",
+    subtitle: "",
+    byline: "Equipo Alium Care",
+    description: "Qué es la voluntad anticipada en México, cómo se tramita y qué protege. Una guía clara para decidir sobre tus cuidados con tiempo.",
+    excerpt: "La voluntad anticipada existe para que eso no ocurra. Es la forma de que tu voz siga presente cuando tú ya no puedas expresarla.",
+    category: "Voluntad anticipada",
+    readingTime: "7 min de lectura",
+    introduction: [
+      "Hay decisiones que nadie quiere tomar en una sala de urgencias. ¿Conectar o no a un respirador? ¿Intentar una reanimación más? ¿Trasladar al hospital a alguien que ya está muy débil? Cuando una persona ya no puede hablar por sí misma, esas preguntas caen sobre su familia, casi siempre en el peor momento, con prisa y sin saber qué habría querido.",
+      "La voluntad anticipada existe para que eso no ocurra. Es la forma de que tu voz siga presente cuando tú ya no puedas expresarla.",
+    ],
+    sections: [
+      {
+        heading: "¿Qué es la voluntad anticipada?",
+        paragraphs: [
+          "Es un documento legal en el que una persona mayor de edad, en pleno uso de sus facultades mentales, deja por escrito qué tratamientos médicos desea o no recibir si llega a una etapa terminal o a una condición de la que no podrá recuperarse.",
+          "También se le conoce como testamento vital. A diferencia de un testamento común, no habla de bienes ni herencias: habla de cómo quieres ser cuidado al final de tu vida.",
+          "En el documento puedes expresar, por ejemplo:",
+        ],
+        bullets: [
+          "Si aceptas o rechazas medidas que solo prolonguen la vida de forma artificial, como la reanimación cardiopulmonar o la ventilación mecánica.",
+          "Tu deseo de recibir cuidados paliativos para controlar el dolor, la falta de aire y otros síntomas.",
+          "Quién será tu representante para vigilar que se cumpla tu decisión.",
+          "En algunos estados, tu voluntad sobre la donación de órganos.",
+        ],
+      },
+      {
+        heading: "Lo que no es: voluntad anticipada no es eutanasia",
+        paragraphs: [
+          "Es la confusión más común, y conviene aclararla desde el inicio. La eutanasia busca terminar deliberadamente con la vida de una persona y está prohibida en México por la Ley General de Salud.",
+          "La voluntad anticipada hace algo muy distinto: permite rechazar tratamientos que solo alargarían el sufrimiento, sin acelerar ni retrasar la muerte. La persona sigue recibiendo atención, alivio del dolor, higiene, compañía y acompañamiento hasta el final.",
+          "A esto se le llama ortotanasia: respetar el curso natural de la vida y acompañar la muerte con dignidad, sin prolongarla artificialmente ni adelantarla.",
+        ],
+      },
+      {
+        heading: "¿Dónde es válida en México?",
+        paragraphs: [
+          "La Ciudad de México fue pionera al aprobar su ley en 2008. Desde entonces, más de una docena de estados han aprobado leyes propias, entre ellos Aguascalientes, Estado de México, Guanajuato, Hidalgo, Michoacán, Puebla (2024) y, más recientemente, Chiapas (2025). Otros estados regulan derechos similares dentro de sus leyes de salud o de cuidados paliativos.",
+          "Como cada entidad tiene su propia legislación, los requisitos, los formatos y los costos cambian. Antes de iniciar el trámite, confirma cuál es la ley vigente en tu estado y cómo se aplica.",
+        ],
+      },
+      {
+        heading: "¿Cómo se tramita?",
+        paragraphs: ["En términos generales existen dos caminos:"],
+        ordered: true,
+        bullets: [
+          "Ante notario público. Es la vía más común. Puede hacerse sin estar enfermo, de manera preventiva, como parte de una planeación personal y familiar.",
+          "En una institución de salud. Cuando la persona ya tiene un diagnóstico de enfermedad terminal, algunas leyes permiten firmar un formato ante el personal médico y la presencia de testigos.",
+        ],
+        paragraphsAfter: [
+          "En ambos casos se pide ser mayor de edad, estar en pleno uso de tus facultades mentales y nombrar a un representante, y en ocasiones a un sustituto. El documento puede modificarse o revocarse en cualquier momento, siempre que la persona pueda expresar su voluntad.",
+        ],
+      },
+      {
+        heading: "¿Qué pasa si no existe el documento?",
+        paragraphs: [
+          "Si la persona no dejó su voluntad por escrito, las decisiones recaen en la familia y el equipo médico. Esto suele generar tres problemas:",
+        ],
+        bullets: [
+          "Incertidumbre: nadie sabe con seguridad qué habría querido.",
+          "Desacuerdos: cada familiar interpreta de forma distinta lo que es mejor.",
+          "Culpa: quien decide carga después con la duda de si hizo lo correcto.",
+        ],
+        paragraphsAfter: [
+          "Por eso, más que un trámite, la voluntad anticipada es una herramienta de paz para quienes se quedan.",
+        ],
+      },
+      {
+        heading: "Lo que cambia para tu familia",
+        paragraphs: [
+          "Firmar una voluntad anticipada es, sobre todo, un acto de cuidado hacia quienes te quieren. Les quita el peso de adivinar, reduce los desacuerdos entre familiares y les permite concentrarse en lo más importante: acompañarte.",
+          "Pero el papel no basta. Lo más valioso es la conversación que lo acompaña:",
+        ],
+        bullets: [
+          "Habla con tu familia sobre lo que para ti significa vivir con calidad y qué situaciones no quisieras vivir.",
+          "Comparte una copia con tu representante y con tu médico de confianza.",
+          "Revisa tu decisión si cambian tu salud o tus circunstancias.",
+        ],
+      },
+      {
+        heading: "Preguntas frecuentes",
+        paragraphs: [
+          "¿Necesito estar enfermo para hacerla? No. Cualquier persona mayor de edad puede hacerla de manera preventiva.",
+          "¿Puedo cambiar de opinión? Sí. El documento puede modificarse o revocarse cuando lo decidas.",
+          "¿Mi familia puede ignorarlo? El documento tiene validez legal en los estados donde existe la ley. Nombrar un representante ayuda a que se respete.",
+        ],
+      },
+    ],
+    conclusionHeading: "No esperes a que sea urgente",
+    conclusion: [
+      "El mejor momento para decidir es cuando todavía puedes hacerlo con calma, informado y acompañado. Hablar hoy de estos temas no es pesimismo: es asegurarte de que, pase lo que pase, tu voz permanezca.",
+    ],
+    closing: [
+      "¿Tienes dudas sobre cómo iniciar tu voluntad anticipada o cómo plantearla en familia?",
+      "En Alium Care te orientamos en lo médico, lo legal y lo emocional. Escríbenos.",
+      "Síguenos en redes para más orientación: Facebook · Instagram · YouTube",
+    ],
+    disclaimer: "Este artículo es informativo y no sustituye la asesoría legal personalizada.",
   },
 ];
 
