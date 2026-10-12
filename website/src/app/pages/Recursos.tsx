@@ -25,7 +25,7 @@ export function Blog() {
       </section>
 
       <section className="py-16 lg:py-24" aria-label="Artículos del blog">
-        <div className="mx-auto grid max-w-6xl gap-6 px-5 sm:px-6 md:grid-cols-2 lg:gap-8 lg:px-8">
+        <div className="mx-auto grid max-w-6xl gap-6 px-5 sm:px-6 md:grid-cols-2 lg:gap-8 lg:px-8 xl:grid-cols-3">
           {[...resources].reverse().map((article) => <ArticleCard key={article.slug} article={article} />)}
         </div>
       </section>

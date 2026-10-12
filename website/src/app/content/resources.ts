@@ -1,4 +1,4 @@
-export type ResourceCategory = "Cuidado del cuidador" | "Voluntad anticipada";
+export type ResourceCategory = "Cuidado del cuidador" | "Voluntad anticipada" | "Adecuación del esfuerzo";
 
 export interface ResourceSection {
   heading: string;
@@ -193,6 +193,105 @@ export const resources: readonly Resource[] = [
       "Síguenos en redes para más orientación: Facebook · Instagram · YouTube",
     ],
     disclaimer: "Este artículo es informativo y no sustituye la asesoría legal personalizada.",
+  },
+  {
+    slug: "curar-vs-cuidar-adecuacion-del-esfuerzo",
+    title: "Curar vs. cuidar: cuando hacer menos también es cuidar",
+    subtitle: "",
+    byline: "Equipo Alium Care",
+    description: "Qué es la adecuación del esfuerzo terapéutico, por qué no significa abandonar al paciente y cómo participar en estas decisiones.",
+    excerpt: "Esta idea es la base de los cuidados paliativos: siempre se puede cuidar, incluso cuando ya no se puede curar.",
+    category: "Adecuación del esfuerzo",
+    readingTime: "6 min de lectura",
+    introduction: [
+      '"Hagan todo lo posible." Es la frase que muchas familias le dicen al médico cuando alguien que aman está grave. Nace del amor y del miedo a perderle. Es una frase legítima y comprensible.',
+      'Pero llega un momento en que "todo lo posible" ya no ayuda al paciente. Hay tratamientos que, en lugar de mejorar su vida, solo prolongan el sufrimiento. Entonces la pregunta cambia: ya no es "¿qué más podemos hacer?", sino "¿qué es lo mejor para esta persona, ahora?".',
+    ],
+    sections: [
+      {
+        heading: "Curar y cuidar no son lo mismo",
+        paragraphs: [
+          "Curar es eliminar una enfermedad o revertir un daño. Cuidar es atender a la persona completa: su dolor, su comodidad, sus miedos, sus vínculos y su dignidad.",
+          "Mientras existe posibilidad de recuperación, ambos caminos van juntos. Cuando la enfermedad avanza y ya no es posible curar, el cuidado no se detiene: se convierte en el centro de todo.",
+          "Esta idea es la base de los cuidados paliativos: siempre se puede cuidar, incluso cuando ya no se puede curar.",
+        ],
+      },
+      {
+        heading: "¿Qué es la adecuación del esfuerzo terapéutico?",
+        paragraphs: [
+          "Es la decisión médica, compartida con el paciente y su familia, de ajustar los tratamientos a la situación real de la persona. En la práctica significa retirar o no iniciar medidas que ya no ofrecen un beneficio y que pueden añadir molestias o sufrimiento.",
+          "Algunos ejemplos:",
+        ],
+        bullets: [
+          "No iniciar una reanimación cardiopulmonar en alguien con una enfermedad terminal.",
+          "Evitar el ingreso a terapia intensiva cuando no cambiaría el pronóstico.",
+          "Suspender estudios, análisis o traslados que solo generan incomodidad.",
+          "No iniciar tratamientos invasivos cuyo resultado esperado es mínimo.",
+        ],
+        paragraphsAfter: [
+          'Antes se usaba el término "limitación del esfuerzo terapéutico". Hoy se prefiere hablar de adecuación, porque no se trata de poner límites al cuidado, sino de darle la forma correcta.',
+        ],
+      },
+      {
+        heading: "No es abandonar",
+        paragraphs: [
+          'Este es el temor más frecuente de las familias, y es importante decirlo con claridad: adecuar el esfuerzo no es rendirse, ni dejar de atender, ni "dejar morir" a alguien.',
+          "Lo que se retira es aquello que ya no ayuda. Lo que se mantiene, e incluso se refuerza, es todo lo que da alivio:",
+        ],
+        bullets: [
+          "Control del dolor, de la falta de aire, de las náuseas y de la ansiedad, la angustia e incluso el delirio, o cuando haya instancias que afecten la tranquilidad y la integridad del paciente terminal.",
+          "Higiene, cuidado de la piel y una posición cómoda.",
+          "Compañía, escucha y apoyo emocional.",
+          "Acompañamiento espiritual, según las creencias de cada persona.",
+        ],
+        paragraphsAfter: [
+          "En México, la Ley General de Salud reconoce el derecho de las personas con enfermedad en etapa terminal a recibir cuidados paliativos y a no ser sometidas a tratamientos desproporcionados. A esa insistencia en tratamientos sin beneficio se le llama obstinación terapéutica.",
+        ],
+      },
+      {
+        heading: "Tres preguntas que ayudan a decidir",
+        paragraphs: [
+          "Cuando el equipo médico propone un tratamiento, la familia puede preguntar:",
+        ],
+        ordered: true,
+        bullets: [
+          "¿Qué beneficio real esperamos de esto para la persona?",
+          "¿Qué molestias o riesgos le puede causar?",
+          "¿Es coherente con lo que ella habría querido?.",
+          "Dar por entendido que la decisión final es la que es congruente con los deseos del paciente y con la tranquilidad del entorno familiar.",
+        ],
+        paragraphsAfter: [
+          'Si existe una voluntad anticipada, ese documento es la mejor guía. Si no existe, la familia puede ayudar recordando los valores y deseos que la persona expresó en vida: frases como "no quiero estar conectado a máquinas" o "quiero estar en mi casa" son información muy valiosa.',
+        ],
+      },
+      {
+        heading: "Cómo es la conversación con el médico",
+        paragraphs: [
+          "Una buena conversación sobre adecuación del esfuerzo suele tener algunos elementos:",
+        ],
+        bullets: [
+          "Un espacio tranquilo y sin prisas.",
+          "Una explicación clara de la situación y del pronóstico.",
+          "Las opciones disponibles, con sus beneficios y riesgos.",
+          "Tiempo para que la familia haga preguntas y exprese sus dudas.",
+          "Un plan concreto de cuidados de confort.",
+          "Que el médico tenga la capacidad de transmitir con claridad toda la información así como resolver las dudas necesarias y que los asistidos tengan la apertura y el entendimiento que estas circunstancias forman parte natural del entorno humano.",
+        ],
+        paragraphsAfter: [
+          "Si sientes que no te han explicado lo suficiente, tienes derecho a pedir otra reunión o una segunda opinión.",
+        ],
+      },
+    ],
+    conclusionHeading: "Una decisión que no se toma en soledad",
+    conclusion: [
+      "La adecuación del esfuerzo nunca debería recaer solo en la familia. Es una decisión compartida con el equipo de salud, que tiene la responsabilidad de explicar con claridad y acompañar el proceso.",
+      "Es normal sentir dudas, e incluso culpa. Elegir el confort sobre la insistencia no es dejar de amar: muchas veces es la forma más honda de hacerlo.",
+    ],
+    closing: [
+      "¿Tu familia está frente a una decisión así? No tienes que enfrentarla sin información. En Alium Care te ayudamos a entender las opciones y a preparar la conversación con el equipo médico.",
+      "Síguenos en redes para más orientación: Facebook · Instagram · YouTube",
+    ],
+    disclaimer: "Este artículo es informativo y no sustituye la valoración del médico tratante.",
   },
 ];
 
